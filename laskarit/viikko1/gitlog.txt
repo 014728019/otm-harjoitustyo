@@ -1,0 +1,131 @@
+commit 063e183b2939a2ff5a98e2e7a84f37f79ed23cad
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 11:09:53 2018 +0200
+
+    poistettu file1 ja 2, lisätty file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 0ae84b23da0da87cbdf777e86331ae85142547d0
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 11:06:06 2018 +0200
+
+    lisätty file3, koska vahingossa committasin muutokset
+
+ tiedostoja/file3 | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit a18591cac0c44b6bb61c7f02f70787acf234e76a
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 11:03:49 2018 +0200
+
+    asdasd
+
+ tiedostoja/file3 | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 7edb81ae88615d49de7e9962952cbc9399b64db2
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 11:00:46 2018 +0200
+
+    filet lisätty
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 51d2fda2c6b8ff6dfc5cc556117eb7428a82d7ba
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:49:55 2018 +0200
+
+    ekaa ja kolmatta muokattu
+
+ eka.txt    | 7 +------
+ kolmas.txt | 5 ++++-
+ 2 files changed, 5 insertions(+), 7 deletions(-)
+
+commit 62832ad6444c3b71815b34a302cb4aba2aabda7d
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:45:37 2018 +0200
+
+    tiedosto.txt -> eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e792dc7455aa0760d4f02685c317130b488d94ae
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:42:26 2018 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit e5f4cf4724e5d7905f7b9007993fac3efba9697f
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:41:22 2018 +0200
+
+    tiedostoa muokattu
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 5a22dfaa2df92fff48aa790927e5943c87c72104
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:40:06 2018 +0200
+
+    tiedostoon lisätty paljon tekstiä
+
+ tiedosto.txt | 558 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 557 insertions(+), 1 deletion(-)
+
+commit 4204ee83350efe38150f96d1ba09e15d42514173
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:30:53 2018 +0200
+
+    stuff hakemisto lisätty ja sinne tiedosto
+
+ stuff/uusitiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 1cdf1cb95b8a96ebf392f25dd7b0a9fcf1b2eb21
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:29:09 2018 +0200
+
+    toista ja kolmatta muokattu
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit a37368ef2ea1f441373773f1b3919e4b15f86e79
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:27:15 2018 +0200
+
+    kolmas lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 57f473fd18feb716f0a66c00428bd3ca194d6e50
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:18:18 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 9da9f6c7c4c5657c543af88cfd093e852f5bfb94
+Author: Jaakko Jokinen <jaakko.a.jokinen@helsinki.fi>
+Date:   Tue Mar 20 10:12:32 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
