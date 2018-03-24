@@ -72,7 +72,7 @@ public class MaksukorttiTest {
     
     @Test
     public void syoMaukkaastiOnnistuuMuuttamaanSaldonNollaksi() {
-        kortti = new Maksukortti(4);
+        kortti = new Maksukortti(4.0);
         kortti.syoMaukkaasti();
         assertEquals("Kortilla on rahaa 0.0 euroa", kortti.toString());
     }
