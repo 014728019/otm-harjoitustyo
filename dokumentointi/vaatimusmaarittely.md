@@ -11,10 +11,10 @@ Sovelluksella käyttäjät ovat pelaajia, joilla kaikilla on samat oikeudet. My�
 ## Käyttöliittymäluonnos
 
 Käyttöliittymä koostuu näistä näkymistä: alkuvalikko, tilastot, peli ja uuden pelaajan lisääminen.
-Alkuvalikko: napit tilasto taulukkoon, uuden pelaajan lisäämiseen ja uuden pelin aloittamiseen.
-Tilastot: näyttää dataa taulukossa.
-Uuden pelaajan lisääminen: input kentät uuden pelaajan luomiseen.
-Peli: pelin aikainen näkymä
+* Alkuvalikko: napit tilasto taulukkoon, uuden pelaajan lisäämiseen ja uuden pelin aloittamiseen.
+* Tilastot: näyttää dataa taulukossa.
+* Uuden pelaajan lisääminen: input kentät uuden pelaajan luomiseen.
+* Peli: pelin aikainen näkymä
 
 ## Perusversion tarjoama toiminnallisuus
 
