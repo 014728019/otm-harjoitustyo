@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.Objects;
 import javafx.scene.paint.Color;
 
-public class Player {
+public class Player implements Comparable{
     private String name;
     private HashMap<Resource, Integer> resources;
+    private int winPoints;
     private Color color;
     
     public Player(String name, Color color) {
+        this.winPoints = 0;
         this.name = name;
         this.color = color;
         this.resources = new HashMap<>();
@@ -20,6 +22,14 @@ public class Player {
         this.resources.put(Resource.Sheep, 0);
         this.resources.put(Resource.Stone, 0);
         this.resources.put(Resource.Wood, 0);
+    }
+
+    public int getWinPoints() {
+        return winPoints;
+    }
+
+    public void setWinPoints(int winPoints) {
+        this.winPoints = winPoints;
     }
 
     public HashMap<Resource, Integer> getResources() {
@@ -86,12 +96,11 @@ public class Player {
     
     public String getStatus() {
         return this.name+
-                "\n\tResurssit:"+
-                "\n\t\tSavi: " +this.resources.get(Resource.Clay)+
-                "\n\t\tPuu: " +this.resources.get(Resource.Wood)+
-                "\n\t\tLammas: " +this.resources.get(Resource.Sheep)+
-                "\n\t\tVilja: " +this.resources.get(Resource.Corp)+
-                "\n\t\tKivi: " +this.resources.get(Resource.Stone);
+                "\n\tSavi: " +this.resources.get(Resource.Clay)+
+                "\n\tPuu: " +this.resources.get(Resource.Wood)+
+                "\n\tLammas: " +this.resources.get(Resource.Sheep)+
+                "\n\tVilja: " +this.resources.get(Resource.Corp)+
+                "\n\tKivi: " +this.resources.get(Resource.Stone);
     }
     
     @Override
@@ -107,5 +116,16 @@ public class Player {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Player p = (Player)o;
+        if (this.winPoints > p.getWinPoints()) {
+            return 1;
+        } else if (this.winPoints > p.getWinPoints()) {
+            return -1;
+        }
+        return 0;
     }
 }

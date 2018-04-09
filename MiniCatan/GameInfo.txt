@@ -1,0 +1,11 @@
+Pelin ohjeet:
+
+Uuden pelaajan luominen:
+    1. Paina alkuvalikossa nappia "Luo uusi pelaaja".
+    2. Kirjoita pelinimesi tekstikenttään. Kenelläkään muulla ei saa olla samaa nimeä.
+    3. Paina "Lisää pelaaja" nappia.
+
+Pelin aloittaminen:
+    1. Paina alkuvalikosta nappia "Uusi peli".
+    2. Lisää pelaajat valintaikkunasta painamalla pelaajan nimeä.
+    3. Paina "Aloita peli" nappia, pelissä kuitenkin täytyy olla 2-4 pelaajaa.
