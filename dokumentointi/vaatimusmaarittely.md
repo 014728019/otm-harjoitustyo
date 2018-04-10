@@ -2,7 +2,7 @@
 
 ## Soveluksen tarkoitus
 
-Sovellus on peli 2-4 pelaajalle. Sovellus pitää kirjaa pelaajista ja loppuun pelattujen pelien tuloksista. Sovellus tarjoaa jonkinlaista tilastoa pelatuista peleistä. Pelin ideana on saavuttaa tietty pistemäärä ensimmäisenä. Pelissä pelaajilla on rakennuksia, jotka tuottavat pelaajille resursseja ja voittopisteitä. Pelaajat voivat kehittää kyliään, jolloin pelaaja saa enemmän resursseja ja voittopisteitä. Pelaaja voi myös rakentaa uusia teitä ja kyliä. Sekä voittopisteitä voi ostaa suoraan.
+Sovellus on peli 2-4 pelaajalle. Sovellus pitää kirjaa pelaajista ja loppuun pelattujen pelien tuloksista. Sovellus tarjoaa jonkinlaista tilastoa pelatuista peleistä. Pelin ideana on saavuttaa tietty pistemäärä ensimmäisenä. Pelissä pelaajilla on rakennuksia, jotka tuottavat pelaajille resursseja ja voittopisteitä. Pelaajat voivat kehittää kyliään, jolloin pelaaja saa enemmän resursseja. Pelaaja voi myös rakentaa uusia teitä ja kyliä.
 
 ## Käyttäjät
 
