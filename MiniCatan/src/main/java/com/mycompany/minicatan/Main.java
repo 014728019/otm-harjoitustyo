@@ -2,7 +2,7 @@
 package com.mycompany.minicatan;
 
 import graphic.GraphicLoader;
-import graphic.InfoView;
+import graphic.MenuView;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
@@ -13,18 +13,13 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws ClassNotFoundException {
-        InfoView info = new InfoView();
-        info.show();
-        
-        GraphicLoader gl = new GraphicLoader(stage);
-
-        Scene scene = new Scene(gl.getMenuView());
-
-        stage.setScene(scene);
         stage.setTitle("MiniCatan");
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
+        
+        MenuView menu = new MenuView();
+        menu.show(stage);
     }
     
     public static void main(String[] args) {
