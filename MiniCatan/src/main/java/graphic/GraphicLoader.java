@@ -5,10 +5,15 @@ import database.PlayerDao;
 import logic.Game;
 import domain.Player;
 import domain.Road;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -22,7 +27,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -212,12 +222,17 @@ public class GraphicLoader {
         return buttons;
     }
 
-    public void getStartGameView() throws Exception {
+    public void getStartGameView() {
         Dialog<List<Player>> dialog = new Dialog<>();
         VBox view = new VBox();
         view.setPrefHeight(200);
 
-        List<Player> choices = this.playerDao.findAll();
+        List<Player> choices = null;
+        try {
+            choices = this.playerDao.findAll();
+        } catch (Exception e) {
+            System.out.println("Error: "+e);
+        }
         ArrayList<Color> colors = new ArrayList(Arrays.asList(Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW));
 
         ChoiceBox choice = new ChoiceBox();
