@@ -103,12 +103,11 @@ public class PlayerTest {
     @Test
     public void testPlayersStatus() {
         String status = "TestPlayer"+
-                "\n\tResurssit:"+
-                "\n\t\tSavi: " +1+
-                "\n\t\tPuu: " +1+
-                "\n\t\tLammas: " +1+
-                "\n\t\tVilja: " +1+
-                "\n\t\tKivi: " +1;
+                "\n\tSavi: " +1+
+                "\n\tPuu: " +1+
+                "\n\tLammas: " +1+
+                "\n\tVilja: " +1+
+                "\n\tKivi: " +1;
         
         assertEquals(status, this.player1.getStatus());
     }
