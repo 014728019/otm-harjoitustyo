@@ -51,6 +51,7 @@ public class PlayerTest {
         assertEquals(0, wood);
         assertEquals(1, sheep);
         assertEquals(1, stone);
+        assertFalse(this.player1.makeRoad());
     }
     
     @Test
@@ -110,5 +111,24 @@ public class PlayerTest {
                 "\n\tKivi: " +1;
         
         assertEquals(status, this.player1.getStatus());
+    }
+    
+    @Test
+    public void testSetAndGetWinPoints() {
+        assertEquals(0, this.player1.getWinPoints());
+        this.player1.setWinPoints(2);
+        assertEquals(2, this.player1.getWinPoints());
+    }
+    
+    @Test
+    public void testComparable() {
+        Player player2 = new Player("TestPlayer2",Color.BLUE);
+        assertEquals(0, player2.compareTo(this.player1));
+        
+        player2.setWinPoints(1);
+        assertEquals(1, player2.compareTo(this.player1));
+        
+        this.player1.setWinPoints(2);
+        assertEquals(-1, player2.compareTo(this.player1));
     }
 }

@@ -123,7 +123,7 @@ public class Player implements Comparable{
         Player p = (Player)o;
         if (this.winPoints > p.getWinPoints()) {
             return 1;
-        } else if (this.winPoints > p.getWinPoints()) {
+        } else if (this.winPoints < p.getWinPoints()) {
             return -1;
         }
         return 0;
