@@ -52,16 +52,20 @@ public class NewPlayerView implements View {
                             throw new Exception("Tietokannasta löytyi pelaaja entuudestaan kyseisellä nimellä! Valitse toinen nimi!");
                         }
                         playerDao.add(player);
-                        System.out.println("New player added: " + player.getName());
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle(null);
                         alert.setHeaderText(null);
                         alert.setContentText("Uusi pelaaja lisätty onnistuneesti nimellä: " + player.getName());
+                        try {
+                            Runtime.getRuntime().exec("say Ompas tyhmä nimi");
+                        } catch (Exception e) {
+                            System.out.println("ERROR: Nothing to worry about.");
+                        }
                         alert.showAndWait();
                     } catch (Exception e) {
                         System.out.println("ERROR: " + e);
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("ERROR");
+                        alert.setTitle(null);
                         alert.setHeaderText(null);
                         alert.setContentText(e.getMessage());
                         alert.showAndWait();
@@ -75,7 +79,7 @@ public class NewPlayerView implements View {
                     alert.showAndWait();
                 }
             });
-            
+
             ButtonType cancelButton = new ButtonType("Takaisin", ButtonBar.ButtonData.CANCEL_CLOSE);
             dialog.getDialogPane().getButtonTypes().addAll(cancelButton);
 

@@ -8,7 +8,7 @@ public class Dices {
     
     public int throwDices() {
         this.throwed = new Random().nextInt(6) + new Random().nextInt(6) + 2;
-        System.out.println("Heitettiin: "+this.throwed);
+        System.out.println("Throwed: "+this.throwed);
         return this.throwed;
     }
 

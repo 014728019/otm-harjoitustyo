@@ -7,3 +7,4 @@
 | 7.4. | 5    | Tehty paljon luokkia, mutta ei vielä testejä. |
 | 8.4. | 5    | Tehty paljon luokkia, mutta ei vielä testejä. |
 | 10.4. | 2    | Pilkottu GraphicLoader pienempiin osiin |
+| 12.4. | 2    | GraphicLoader yksinkertaistettu |
