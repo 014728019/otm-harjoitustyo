@@ -1,5 +1,5 @@
 
-package graphic;
+package com.mycompany.gui;
 
 import javafx.stage.Stage;
 

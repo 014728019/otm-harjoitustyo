@@ -1,5 +1,5 @@
 
-package domain;
+package com.mycompany.domain;
 
 public class Building {
     private Player player;
@@ -12,7 +12,7 @@ public class Building {
     
     public void upgrade() {
         this.value++;
-        System.out.println("Players: "+this.player.getName()+" building has upgraded to level: "+this.value);
+        System.out.println("Players: " + this.player.getName() + " building has upgraded to level: " + this.value);
     }
     
     public void produce(Resource resource) {

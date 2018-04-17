@@ -1,5 +1,5 @@
 
-package domain;
+package com.mycompany.domain;
 
 import java.util.Objects;
 
@@ -65,7 +65,7 @@ public class Road {
         if (obj == null) {
             return false;
         }
-        Road road = (Road)obj;
+        Road road = (Road) obj;
         
         if (this.node1.getLocation().equals(road.getNode1().getLocation()) && this.node2.getLocation().equals(road.getNode2().getLocation())) {
             return true;

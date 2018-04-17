@@ -1,6 +1,6 @@
-package database;
+package com.mycompany.database;
 
-import domain.Player;
+import com.mycompany.domain.Player;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,10 +61,10 @@ public class PlayerDao implements Dao<Player, Integer> {
             stmt.close();
             connection.close();
             
-            System.out.println("Uusi pelaaja lisätty: "+o.getName());
+            System.out.println("Uusi pelaaja lisätty: " + o.getName());
         } else {
-            System.out.println("Uutta pelaajaa ei voitu lisätä, koska nimi on jo varattu: "+o.getName());
-            throw new Exception("Uutta pelaajaa ei voitu lisätä, koska nimi on jo varattu: "+o.getName());
+            System.out.println("Uutta pelaajaa ei voitu lisätä, koska nimi on jo varattu: " + o.getName());
+            throw new Exception("Uutta pelaajaa ei voitu lisätä, koska nimi on jo varattu: " + o.getName());
         }
     }
 

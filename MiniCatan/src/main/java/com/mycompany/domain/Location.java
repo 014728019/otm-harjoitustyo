@@ -1,4 +1,4 @@
-package domain;
+package com.mycompany.domain;
 
 public class Location {
     private int x;

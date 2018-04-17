@@ -1,11 +1,11 @@
 
-package domain;
+package com.mycompany.domain;
 
 import java.util.HashMap;
 import java.util.Objects;
 import javafx.scene.paint.Color;
 
-public class Player implements Comparable{
+public class Player implements Comparable {
     private String name;
     private HashMap<Resource, Integer> resources;
     private int winPoints;
@@ -37,7 +37,7 @@ public class Player implements Comparable{
     }
     
     public boolean makeRoad() {
-        if (this.resources.get(Resource.Clay)>=1 && this.resources.get(Resource.Wood)>=1) {
+        if (this.resources.get(Resource.Clay) >= 1 && this.resources.get(Resource.Wood) >= 1) {
             int clays = this.resources.get(Resource.Clay);
             int wood = this.resources.get(Resource.Wood);
             clays--;
@@ -50,8 +50,8 @@ public class Player implements Comparable{
     }
     
     public boolean makeBuilding() {
-        if (this.resources.get(Resource.Clay)>=1 && this.resources.get(Resource.Wood)>=1
-                && this.resources.get(Resource.Sheep)>=1 && this.resources.get(Resource.Corp)>=1) {
+        if (this.resources.get(Resource.Clay) >= 1 && this.resources.get(Resource.Wood) >= 1
+                && this.resources.get(Resource.Sheep) >= 1 && this.resources.get(Resource.Corp) >= 1) {
             int clays = this.resources.get(Resource.Clay);
             int wood = this.resources.get(Resource.Wood);
             int corp = this.resources.get(Resource.Corp);
@@ -70,11 +70,11 @@ public class Player implements Comparable{
     }
     
     public boolean upgradeBuilding() {
-        if (this.resources.get(Resource.Stone)>=3 && this.resources.get(Resource.Corp)>=2) {
+        if (this.resources.get(Resource.Stone) >= 3 && this.resources.get(Resource.Corp) >= 2) {
             int stone = this.resources.get(Resource.Stone);
             int corp = this.resources.get(Resource.Corp);
-            stone = stone -3;
-            corp = corp -2;
+            stone = stone - 3;
+            corp = corp - 2;
             this.resources.put(Resource.Corp, corp);
             this.resources.put(Resource.Stone, stone);
             return true;
@@ -83,7 +83,7 @@ public class Player implements Comparable{
     }
     
     public void giveResources(Resource resource, int number) {
-        this.resources.replace(resource, this.resources.get(resource)+number);
+        this.resources.replace(resource, this.resources.get(resource) + number);
     }
 
     public Color getColor() {
@@ -96,11 +96,11 @@ public class Player implements Comparable{
     
     public String getStatus() {
         return this.name+
-                "\n\tSavi: " +this.resources.get(Resource.Clay)+
-                "\n\tPuu: " +this.resources.get(Resource.Wood)+
-                "\n\tLammas: " +this.resources.get(Resource.Sheep)+
-                "\n\tVilja: " +this.resources.get(Resource.Corp)+
-                "\n\tKivi: " +this.resources.get(Resource.Stone);
+                "\n\tSavi: " + this.resources.get(Resource.Clay) +
+                "\n\tPuu: " + this.resources.get(Resource.Wood) +
+                "\n\tLammas: " + this.resources.get(Resource.Sheep) +
+                "\n\tVilja: " + this.resources.get(Resource.Corp) +
+                "\n\tKivi: " + this.resources.get(Resource.Stone);
     }
     
     @Override
@@ -120,7 +120,7 @@ public class Player implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        Player p = (Player)o;
+        Player p = (Player) o;
         if (this.winPoints > p.getWinPoints()) {
             return 1;
         } else if (this.winPoints < p.getWinPoints()) {

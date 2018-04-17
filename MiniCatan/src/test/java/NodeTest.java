@@ -1,9 +1,9 @@
 
-import domain.Building;
-import domain.Location;
-import domain.Node;
-import domain.Player;
-import domain.Resource;
+import com.mycompany.domain.Building;
+import com.mycompany.domain.Location;
+import com.mycompany.domain.Node;
+import com.mycompany.domain.Player;
+import com.mycompany.domain.Resource;
 import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;

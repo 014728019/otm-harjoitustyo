@@ -1,5 +1,5 @@
 
-package logic;
+package com.mycompany.logics;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ public class Dices {
     
     public int throwDices() {
         this.throwed = new Random().nextInt(6) + new Random().nextInt(6) + 2;
-        System.out.println("Throwed: "+this.throwed);
+        System.out.println("Throwed: " + this.throwed);
         return this.throwed;
     }
 

@@ -1,7 +1,7 @@
 
-package graphic;
+package com.mycompany.gui;
 
-import domain.Player;
+import com.mycompany.domain.Player;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

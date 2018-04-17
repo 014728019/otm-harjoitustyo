@@ -1,6 +1,6 @@
 
-import domain.Player;
-import domain.Resource;
+import com.mycompany.domain.Player;
+import com.mycompany.domain.Resource;
 import javafx.scene.paint.Color;
 import org.junit.After;
 import org.junit.AfterClass;

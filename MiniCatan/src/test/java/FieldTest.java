@@ -1,5 +1,5 @@
 
-import domain.Player;
+import com.mycompany.domain.Player;
 import java.util.List;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.BorderPane;

@@ -1,5 +1,5 @@
 
-package domain;
+package com.mycompany.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +10,13 @@ public class Node {
     private ArrayList<String> neighbours;
     private Building building;
     
-    public Node (String id, Location location, List<String> neighbours) {
+    public Node(String id, Location location, List<String> neighbours) {
         this.id = id;
         this.location = location;
         this.neighbours = new ArrayList<>();
         this.building = null;
         
-        neighbours.stream().forEach(n->{
+        neighbours.stream().forEach(n-> {
             this.neighbours.add(n);
         });
     }

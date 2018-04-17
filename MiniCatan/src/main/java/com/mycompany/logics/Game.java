@@ -1,12 +1,12 @@
-package logic;
+package com.mycompany.logics;
 
-import domain.Building;
-import domain.FieldWeb;
-import domain.Node;
-import domain.NodeWeb;
-import domain.Player;
-import domain.Road;
-import graphic.GameView;
+import com.mycompany.domain.Building;
+import com.mycompany.domain.FieldWeb;
+import com.mycompany.domain.Node;
+import com.mycompany.domain.NodeWeb;
+import com.mycompany.domain.Player;
+import com.mycompany.domain.Road;
+import com.mycompany.gui.GameView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;

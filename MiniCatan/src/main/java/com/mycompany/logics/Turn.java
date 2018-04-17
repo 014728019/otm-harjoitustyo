@@ -1,7 +1,7 @@
 
-package logic;
+package com.mycompany.logics;
 
-import domain.Player;
+import com.mycompany.domain.Player;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -19,7 +19,7 @@ public class Turn {
             this.players.add(p);
         });
         
-        for (int i = this.playersCount-1; i>=0; i--) {
+        for (int i = this.playersCount - 1; i >= 0; i--) {
             this.players.add(this.players.get(i));
         }
         
@@ -34,7 +34,7 @@ public class Turn {
     }
     
     public void next() {
-        if (moves >= this.players.size()*2) {
+        if (moves >= this.players.size() * 2) {
             this.players.add(this.players.get(0));
         }
         

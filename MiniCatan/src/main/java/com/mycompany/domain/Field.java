@@ -1,5 +1,5 @@
 
-package domain;
+package com.mycompany.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ public class Field {
         this.location = location;
         this.nodes = new ArrayList<>();
         
-        nodes.stream().forEach(n->{
+        nodes.stream().forEach(n-> {
             this.nodes.add(n);
         });
     }

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package graphic;
+package com.mycompany.gui;
 
-import database.Database;
-import database.PlayerDao;
-import domain.Player;
+import com.mycompany.database.Database;
+import com.mycompany.database.PlayerDao;
+import com.mycompany.domain.Player;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

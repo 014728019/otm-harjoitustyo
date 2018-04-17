@@ -1,7 +1,7 @@
 
-import domain.Building;
-import domain.Player;
-import domain.Resource;
+import com.mycompany.domain.Building;
+import com.mycompany.domain.Player;
+import com.mycompany.domain.Resource;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

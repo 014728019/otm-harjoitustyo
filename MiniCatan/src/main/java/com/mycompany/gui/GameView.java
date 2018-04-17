@@ -1,10 +1,11 @@
-package graphic;
+package com.mycompany.gui;
 
-import database.Database;
-import database.PlayerDao;
-import domain.Building;
-import domain.Player;
-import domain.Road;
+import com.mycompany.database.Database;
+import com.mycompany.database.PlayerDao;
+import com.mycompany.domain.Building;
+import com.mycompany.domain.Player;
+import com.mycompany.domain.Road;
+import com.mycompany.logics.Game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +28,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import logic.Game;
 
 public class GameView implements View {
 

@@ -1,5 +1,5 @@
 
-import domain.NodeWeb;
+import com.mycompany.domain.NodeWeb;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

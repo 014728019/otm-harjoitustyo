@@ -1,5 +1,5 @@
 
-import domain.Location;
+import com.mycompany.domain.Location;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
