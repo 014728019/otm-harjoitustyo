@@ -8,4 +8,5 @@
 | 8.4. | 5    | Tehty paljon luokkia, mutta ei vielä testejä. |
 | 10.4. | 2    | Pilkottu GraphicLoader pienempiin osiin |
 | 12.4. | 2    | GraphicLoader yksinkertaistettu |
-|  | 15.5    |  |
+| 17.4. | 2    | Pakkaukset siirretty ja nimetty uudelleen ohjeiden mukaisiksi, testejä jne. |
+| Aika yhteensä: | 18.5    |  |
