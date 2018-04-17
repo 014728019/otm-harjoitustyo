@@ -1,6 +1,6 @@
 # MiniCatan
 
-MiniCatan on peli 2-4 pelaajalle. Se on yksinkertaisempi mini versio Catan lautapelistä. Ohjelmassa käyttäjä voi luoda itselleen pelinimen ja pelata. Ohjelma kerää ja näyttää tilastoa pelatuista peleistä.
+MiniCatan on peli 2-4 pelaajalle. Se on yksinkertaistettu ja hieman muunneltu versio Catan lautapelistä. Ohjelmassa käyttäjä voi luoda itselleen pelinimen ja pelata. Ohjelma kerää ja näyttää tilastoa pelatuista peleistä.
 
 ## Dokumentaatio
 
