@@ -9,4 +9,4 @@
 | 10.4. | 2    | Pilkottu GraphicLoader pienempiin osiin |
 | 12.4. | 2    | GraphicLoader yksinkertaistettu |
 | 17.4. | 2    | Pakkaukset siirretty ja nimetty uudelleen ohjeiden mukaisiksi, testejä jne. |
-| Aika yhteensä: | 18.5    |  |
+|  | 18.5    |  |
