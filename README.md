@@ -28,11 +28,24 @@ Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/ja
 
 ### Suoritettavan jarin generointi
 
-...
+Komento
+
+```
+mvn package
+```
+
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _MiniCatan-1.0-SNAPSHOT.jar_
+Ennen .jar tiedoston suorittamista tiedostojen _MiniCatanDatabase.db_ ja _GameInfo.txt_ tulisi olla samassa kansiossa.
 
 ### JavaDoc
 
-...
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
+
+JavaDocia voi tarkastella avaamalla selaimella tiedosto _target/site/apidocs/index.html_
 
 ### Checkstyle
 
