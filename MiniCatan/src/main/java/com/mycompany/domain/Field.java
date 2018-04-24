@@ -8,23 +8,13 @@ public class Field {
     private Resource resource;
     private int value;
     private Location location;
-    private boolean disabled;
     private ArrayList<String> nodes;
     
     public Field(Resource resource, int value, Location location, ArrayList<String> nodes) {
         this.location = location;
         this.resource = resource;
         this.value = value;
-        this.disabled = false;
         this.nodes = nodes;
-    }
-    
-    public void unDisable() {
-        this.disabled = false;
-    }
-    
-    public void disable() {
-        this.disabled = true;
     }
 
     public Resource getResource() {
@@ -37,10 +27,6 @@ public class Field {
 
     public Location getLocation() {
         return location;
-    }
-
-    public boolean isDisabled() {
-        return disabled;
     }
 
     public void setLocationAndNode(Location location, List<String> nodes) {

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Game {
 
@@ -38,78 +39,42 @@ public class Game {
     }
 
     public Road clickRoad(Road road) {
-        Road newRoad = new Road(turn.getPlayer(), road.getNode1(), road.getNode2());
-        if (!this.roads.contains(road)) {
-            if ((road.getNode1().getBuilding() != null && road.getNode1().getBuilding().getPlayer().equals(turn.getPlayer()))
-                    || (road.getNode2().getBuilding() != null && road.getNode2().getBuilding().getPlayer().equals(turn.getPlayer()))) {
-                if (turn.getPlayer().makeRoad()) {
-                    this.roads.add(newRoad);
-                    return newRoad;
-                }
-
-            }
-        }
-
-        if (!this.roads.contains(road)) {
-            for (Road r : this.roads) {
-                if (r.getPlayer().equals(turn.getPlayer())) {
-                    if (r.getNode1().equals(road.getNode1()) && road.getNode1().getBuilding() == null) {
-                        if (turn.getPlayer().makeRoad()) {
-                            this.roads.add(newRoad);
-                            return newRoad;
-                        }
-                        break;
-                    }
-                    if (r.getNode2().equals(road.getNode2()) && road.getNode2().getBuilding() == null) {
-                        if (turn.getPlayer().makeRoad()) {
-                            this.roads.add(newRoad);
-                            return newRoad;
-                        }
-                        break;
-                    }
-                    if (r.getNode2().equals(road.getNode1()) && road.getNode1().getBuilding() == null) {
-                        if (turn.getPlayer().makeRoad()) {
-                            this.roads.add(newRoad);
-                            return newRoad;
-                        }
-                        break;
-                    }
-                    if (r.getNode1().equals(road.getNode2()) && road.getNode2().getBuilding() == null) {
-                        if (turn.getPlayer().makeRoad()) {
-                            this.roads.add(newRoad);
-                            return newRoad;
-                        }
-                        break;
-                    }
-                }
+        if (!this.roads.contains(road) && this.playerHasPathToRoad(road)) {
+            if (turn.getPlayer().makeRoad()) {
+                Road newRoad = new Road(turn.getPlayer(), road.getNode1(), road.getNode2());
+                this.roads.add(newRoad);
+                return newRoad;
             }
         }
         return null;
     }
 
+    public boolean playerHasPathToRoad(Road road) {
+        if (road.getNode1().getBuilding() != null && road.getNode1().getBuilding().getPlayer().equals(turn.getPlayer())) {
+            return true;
+        }
+        if (road.getNode2().getBuilding() != null && road.getNode2().getBuilding().getPlayer().equals(turn.getPlayer())) {
+            return true;
+        }
+        for (Road r : this.roads) {
+            if (r.getPlayer().equals(turn.getPlayer()) && r.inTouch(road)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Building clickNode(Node node) {
-        if (node.getBuilding() == null && node.getNeighbours().stream()
-                .map(n -> this.nodeWeb.getNode(n))
-                .filter(n -> n.getBuilding() != null).count() == 0) {
-            if (this.buildings.stream().filter(b -> b.getPlayer().equals(turn.getPlayer())).count() < 2) {
-                Building b = new Building(turn.getPlayer());
-                this.buildings.add(b);
-                node.makeBuilding(b);
-                turn.next();
-                if (this.buildings.size() == this.players.size() * 2) {
-                    this.throwDice();
-                }
-                return b;
-            } else if (this.roads.stream()
-                    .filter(r -> r.getPlayer().equals(turn.getPlayer()))
-                    .filter(r -> r.getLocation1().equals(node.getLocation()) || r.getLocation2().equals(node.getLocation())).count()
-                    >= 1) {
-                if (turn.getPlayer().makeBuilding()) {
-                    Building b = new Building(turn.getPlayer());
-                    this.buildings.add(b);
-                    node.makeBuilding(b);
-                    return b;
-                }
+        if (this.nodeIsFreeToBuild(node) && this.buildsOnFirst2Round()) {
+            Building b = this.makeBuilding(node);
+            turn.next();
+            if (this.buildings.size() == this.players.size() * 2) {
+                this.throwDice();
+            }
+            return b;
+        } else if (this.nodeIsFreeToBuild(node) && this.playerHasPathToNode(node)) {
+            if (turn.getPlayer().makeBuilding()) {
+                return this.makeBuilding(node);
             }
         } else if (node.getBuilding() != null && node.getBuilding().getPlayer().equals(turn.getPlayer()) && node.getBuilding().getValue() < upgradeLimit) {
             if (turn.getPlayer().upgradeBuilding()) {
@@ -118,6 +83,38 @@ public class Game {
             }
         }
         return null;
+    }
+
+    public Building makeBuilding(Node node) {
+        Building b = new Building(turn.getPlayer());
+        this.buildings.add(b);
+        node.makeBuilding(b);
+        return b;
+    }
+
+    public boolean nodeIsFreeToBuild(Node node) {
+        if (node.getBuilding() == null && node.getNeighbours().stream()
+                .map(n -> this.nodeWeb.getNode(n))
+                .filter(n -> n.getBuilding() != null).count() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean buildsOnFirst2Round() {
+        if (this.buildings.stream().filter(b -> b.getPlayer().equals(turn.getPlayer())).count() < 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean playerHasPathToNode(Node node) {
+        if (this.roads.stream()
+                .filter(r -> r.getPlayer().equals(turn.getPlayer()))
+                .filter(r -> r.inTouch(node)).count() >= 1) {
+            return true;
+        }
+        return false;
     }
 
     public Turn getTurn() {

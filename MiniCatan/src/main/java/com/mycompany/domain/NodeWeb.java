@@ -74,7 +74,7 @@ public class NodeWeb {
         this.nodes.put("N53", new Node("N53", new Location(6, 11), Arrays.asList("N50", "N54")));
         this.nodes.put("N54", new Node("N54", new Location(7, 11), Arrays.asList("N53", "N51")));
 
-        //this.referenceMap();
+//        this.referenceMap();
     }
 
     public HashMap<String, Node> getNodes() {
@@ -85,30 +85,30 @@ public class NodeWeb {
         return this.nodes.get(id);
     }
 
-    public void referenceMap() {
-        try {
-            NodeWeb nodeWeb = this;
-            Canvas underlay = new Canvas(13 * 54, 12 * 60);
-            GraphicsContext plotter = underlay.getGraphicsContext2D();
-            plotter.setLineWidth(4);
-
-            for (Node n : nodeWeb.getNodes().values()) {
-                plotter.setStroke(Color.rgb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
-                n.getNeighbours().stream().map(m -> nodeWeb.getNode(m)).forEach(neigh -> {
-                    plotter.strokeLine(
-                            n.getLocation().getX() * 54,
-                            n.getLocation().getY() * 60,
-                            (((double) neigh.getLocation().getX() + n.getLocation().getX()) / 2) * 54,
-                            (((double) neigh.getLocation().getY() + n.getLocation().getY()) / 2) * 60);
-                });
-            }
-
-            WritableImage wi = new WritableImage((int) underlay.getWidth(), (int) underlay.getHeight());
-            WritableImage snapshot = underlay.snapshot(new SnapshotParameters(), wi);
-            File output = new File("ReferenceMap.png");
-            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", output);
-        } catch (Exception e) {
-            System.out.println("ERROR: " + e);
-        }
-    }
+//    public void referenceMap() {
+//        try {
+//            NodeWeb nodeWeb = this;
+//            Canvas underlay = new Canvas(13 * 54, 12 * 60);
+//            GraphicsContext plotter = underlay.getGraphicsContext2D();
+//            plotter.setLineWidth(4);
+//
+//            for (Node n : nodeWeb.getNodes().values()) {
+//                plotter.setStroke(Color.rgb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+//                n.getNeighbours().stream().map(m -> nodeWeb.getNode(m)).forEach(neigh -> {
+//                    plotter.strokeLine(
+//                            n.getLocation().getX() * 54,
+//                            n.getLocation().getY() * 60,
+//                            (((double) neigh.getLocation().getX() + n.getLocation().getX()) / 2) * 54,
+//                            (((double) neigh.getLocation().getY() + n.getLocation().getY()) / 2) * 60);
+//                });
+//            }
+//
+//            WritableImage wi = new WritableImage((int) underlay.getWidth(), (int) underlay.getHeight());
+//            WritableImage snapshot = underlay.snapshot(new SnapshotParameters(), wi);
+//            File output = new File("ReferenceMap.png");
+//            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", output);
+//        } catch (Exception e) {
+//            System.out.println("ERROR: " + e);
+//        }
+//    }
 }

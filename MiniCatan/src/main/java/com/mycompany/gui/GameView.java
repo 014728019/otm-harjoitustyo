@@ -109,6 +109,10 @@ public class GameView implements View {
 
         dialog.getDialogPane().setContent(root);
         dialog.showAndWait();
+        
+        if (this.game == null) {
+            throw new Exception("Game not initialized.");
+        }
     }
 
     @Override
