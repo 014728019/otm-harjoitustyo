@@ -126,9 +126,9 @@ public class PlayerTest {
         assertEquals(0, player2.compareTo(this.player1));
         
         player2.setWinPoints(1);
-        assertEquals(1, player2.compareTo(this.player1));
+        assertEquals(-1, player2.compareTo(this.player1));
         
         this.player1.setWinPoints(2);
-        assertEquals(-1, player2.compareTo(this.player1));
+        assertEquals(1, player2.compareTo(this.player1));
     }
 }

@@ -86,7 +86,6 @@ public class GameView implements View {
         });
 
         newGame.setOnAction((event) -> {
-
             if (players.size() >= 2 && winpointChoice.getValue() != null) {
                 this.game = new Game(players, (int) winpointChoice.getValue());
                 this.initView();

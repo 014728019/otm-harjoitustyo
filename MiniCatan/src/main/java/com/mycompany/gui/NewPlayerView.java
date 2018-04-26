@@ -56,11 +56,6 @@ public class NewPlayerView implements View {
                         alert.setTitle(null);
                         alert.setHeaderText(null);
                         alert.setContentText("Uusi pelaaja lisätty onnistuneesti nimellä: " + player.getName());
-                        try {
-                            Runtime.getRuntime().exec("say Ompas tyhmä nimi");
-                        } catch (Exception e) {
-                            System.out.println("ERROR: Nothing to worry about.");
-                        }
                         alert.showAndWait();
                     } catch (Exception e) {
                         System.out.println("ERROR: " + e);

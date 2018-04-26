@@ -1,11 +1,14 @@
 package com.mycompany.logics;
 
+import com.mycompany.database.Database;
+import com.mycompany.database.StatisticsDao;
 import com.mycompany.domain.Building;
 import com.mycompany.domain.FieldWeb;
 import com.mycompany.domain.Node;
 import com.mycompany.domain.NodeWeb;
 import com.mycompany.domain.Player;
 import com.mycompany.domain.Road;
+import com.mycompany.domain.StatisticsBuilder;
 import com.mycompany.gui.GameView;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,10 +41,14 @@ public class Game {
         this.winPointsLimit = winPointsLimit;
     }
 
+    public int getWinPointsLimit() {
+        return winPointsLimit;
+    }
+
     public Road clickRoad(Road road) {
         if (!this.roads.contains(road) && this.playerHasPathToRoad(road)) {
-            if (turn.getPlayer().makeRoad()) {
-                Road newRoad = new Road(turn.getPlayer(), road.getNode1(), road.getNode2());
+            if (this.turn.getPlayer().makeRoad()) {
+                Road newRoad = new Road(this.turn.getPlayer(), road.getNode1(), road.getNode2());
                 this.roads.add(newRoad);
                 return newRoad;
             }
@@ -50,14 +57,14 @@ public class Game {
     }
 
     public boolean playerHasPathToRoad(Road road) {
-        if (road.getNode1().getBuilding() != null && road.getNode1().getBuilding().getPlayer().equals(turn.getPlayer())) {
+        if (road.getNode1().getBuilding() != null && road.getNode1().getBuilding().getPlayer().equals(this.turn.getPlayer())) {
             return true;
         }
-        if (road.getNode2().getBuilding() != null && road.getNode2().getBuilding().getPlayer().equals(turn.getPlayer())) {
+        if (road.getNode2().getBuilding() != null && road.getNode2().getBuilding().getPlayer().equals(this.turn.getPlayer())) {
             return true;
         }
         for (Road r : this.roads) {
-            if (r.getPlayer().equals(turn.getPlayer()) && r.inTouch(road)) {
+            if (r.getPlayer().equals(this.turn.getPlayer()) && r.inTouch(road)) {
                 return true;
             }
         }
@@ -67,17 +74,17 @@ public class Game {
     public Building clickNode(Node node) {
         if (this.nodeIsFreeToBuild(node) && this.buildsOnFirst2Round()) {
             Building b = this.makeBuilding(node);
-            turn.next();
+            this.turn.next();
             if (this.buildings.size() == this.players.size() * 2) {
                 this.throwDice();
             }
             return b;
         } else if (this.nodeIsFreeToBuild(node) && this.playerHasPathToNode(node)) {
-            if (turn.getPlayer().makeBuilding()) {
+            if (this.turn.getPlayer().makeBuilding()) {
                 return this.makeBuilding(node);
             }
-        } else if (node.getBuilding() != null && node.getBuilding().getPlayer().equals(turn.getPlayer()) && node.getBuilding().getValue() < upgradeLimit) {
-            if (turn.getPlayer().upgradeBuilding()) {
+        } else if (node.getBuilding() != null && node.getBuilding().getPlayer().equals(this.turn.getPlayer()) && node.getBuilding().getValue() < this.upgradeLimit) {
+            if (this.turn.getPlayer().upgradeBuilding()) {
                 node.getBuilding().upgrade();
                 return node.getBuilding();
             }
@@ -86,7 +93,7 @@ public class Game {
     }
 
     public Building makeBuilding(Node node) {
-        Building b = new Building(turn.getPlayer());
+        Building b = new Building(this.turn.getPlayer());
         this.buildings.add(b);
         node.makeBuilding(b);
         return b;
@@ -102,7 +109,7 @@ public class Game {
     }
 
     public boolean buildsOnFirst2Round() {
-        if (this.buildings.stream().filter(b -> b.getPlayer().equals(turn.getPlayer())).count() < 2) {
+        if (this.buildings.stream().filter(b -> b.getPlayer().equals(this.turn.getPlayer())).count() < 2) {
             return true;
         }
         return false;
@@ -110,7 +117,7 @@ public class Game {
 
     public boolean playerHasPathToNode(Node node) {
         if (this.roads.stream()
-                .filter(r -> r.getPlayer().equals(turn.getPlayer()))
+                .filter(r -> r.getPlayer().equals(this.turn.getPlayer()))
                 .filter(r -> r.inTouch(node)).count() >= 1) {
             return true;
         }
@@ -118,11 +125,11 @@ public class Game {
     }
 
     public Turn getTurn() {
-        return turn;
+        return this.turn;
     }
 
     public Dices getDices() {
-        return dices;
+        return this.dices;
     }
 
     public ArrayList<Player> getPlayers() {
@@ -130,23 +137,23 @@ public class Game {
     }
 
     public boolean isEnded() {
-        return ended;
+        return this.ended;
     }
 
     public ArrayList<Road> getRoads() {
-        return roads;
+        return this.roads;
     }
 
     public ArrayList<Building> getBuildings() {
-        return buildings;
+        return this.buildings;
     }
 
     public NodeWeb getNodeWeb() {
-        return nodeWeb;
+        return this.nodeWeb;
     }
 
     public FieldWeb getFieldWeb() {
-        return fieldWeb;
+        return this.fieldWeb;
     }
 
     public void throwDice() {
@@ -182,6 +189,15 @@ public class Game {
         if (this.players.stream().mapToInt(p -> p.getWinPoints()).max().getAsInt() >= this.winPointsLimit) {
             this.ended = true;
             System.out.println("Game over!");
+            try {
+                StatisticsDao dao = new StatisticsDao(new Database("jdbc:sqlite:MiniCatanDatabase.db"));
+                for (Player p : this.players) {
+                    dao.add(new StatisticsBuilder(p, this));
+                }
+            } catch (Exception e) {
+                System.out.println("Players statistics couldn't be saved to database.");
+                System.out.println("ERROR: " + e);
+            }
         }
     }
 

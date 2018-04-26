@@ -15,10 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
-public class InfoView {
-
-    public void show() {
+public class InfoView implements View{
+    
+    @Override
+    public void show(Stage stage) {
         Dialog<List<Player>> dialog = new Dialog<>();
         VBox view = new VBox();
         dialog.getDialogPane().setContent(view);

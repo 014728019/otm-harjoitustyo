@@ -10,7 +10,7 @@ import java.util.List;
 import javax.management.BadAttributeValueExpException;
 import javax.naming.NamingException;
 
-public class PlayerDao implements Dao<Player, Integer> {
+public class PlayerDao implements Dao<Player, String> {
 
     private Database database;
 
@@ -19,7 +19,7 @@ public class PlayerDao implements Dao<Player, Integer> {
     }
 
     @Override
-    public Player findOne(Integer key) throws Exception {
+    public Player findOne(String key) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -45,7 +45,7 @@ public class PlayerDao implements Dao<Player, Integer> {
     }
 
     @Override
-    public void delete(Integer key) throws Exception {
+    public void delete(String key) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

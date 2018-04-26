@@ -34,7 +34,7 @@ public class Turn {
     }
     
     public void next() {
-        if (moves >= this.players.size() * 2) {
+        if (this.moves >= this.players.size() * 2) {
             this.players.add(this.players.get(0));
         }
         

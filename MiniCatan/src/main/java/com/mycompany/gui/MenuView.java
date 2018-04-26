@@ -46,7 +46,12 @@ public class MenuView implements View{
 
         showInfo.setOnAction((event) -> {
             InfoView info = new InfoView();
-            info.show();
+            info.show(stage);
+        });
+        
+        statistics.setOnAction((event) -> {
+            StatisticsView stats = new StatisticsView();
+            stats.show(stage);
         });
 
         buttons.getChildren().addAll(showInfo, statistics, newPlayer, newGame);

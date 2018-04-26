@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Objects;
 import javafx.scene.paint.Color;
 
-public class Player implements Comparable {
+public class Player implements Comparable<Player> {
     private String name;
     private HashMap<Resource, Integer> resources;
     private int winPoints;
@@ -119,13 +119,7 @@ public class Player implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        Player p = (Player) o;
-        if (this.winPoints > p.getWinPoints()) {
-            return 1;
-        } else if (this.winPoints < p.getWinPoints()) {
-            return -1;
-        }
-        return 0;
+    public int compareTo(Player o) {
+        return o.getWinPoints() - this.winPoints;
     }
 }
