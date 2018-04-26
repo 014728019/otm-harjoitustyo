@@ -10,4 +10,5 @@
 | 12.4. | 2    | GraphicLoader yksinkertaistettu |
 | 17.4. | 2    | Pakkaukset siirretty ja nimetty uudelleen ohjeiden mukaisiksi, testejä jne. |
 | 24.4. | 4    | Testejä, varmistettu että .jar tiedoston voi generoida, README päivitetty, jne. |
-|  | 22.5    |  |
+| 26.4. | 3 | Muokattu tietokannan rakennetta ja lisätty toiminnallisuus pelitulosten tallentamiseen ja tilastointiin. |
+|  | 25.5    |  |
