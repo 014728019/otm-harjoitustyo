@@ -9,5 +9,5 @@
 | 10.4. | 2    | Pilkottu GraphicLoader pienempiin osiin |
 | 12.4. | 2    | GraphicLoader yksinkertaistettu |
 | 17.4. | 2    | Pakkaukset siirretty ja nimetty uudelleen ohjeiden mukaisiksi, testejä jne. |
-| 24.4. | 4    | Testejä, varmistettu että .jar tiedoston voi generoida, README päivitetty jne. |
+| 24.4. | 4    | Testejä, varmistettu että .jar tiedoston voi generoida, README päivitetty, jne. |
 |  | 22.5    |  |
