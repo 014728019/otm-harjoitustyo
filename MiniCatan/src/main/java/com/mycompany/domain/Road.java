@@ -18,6 +18,10 @@ public class Road {
         return node1;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     public Node getNode2() {
         return node2;
     }

@@ -1,5 +1,6 @@
 package com.mycompany.gui;
 
+import com.mycompany.database.DaoResources;
 import com.mycompany.database.Database;
 import com.mycompany.database.PlayerDao;
 import com.mycompany.domain.Building;
@@ -21,15 +22,17 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class GameView implements View {
+public class GameView implements View, DaoResources {
 
     private Canvas underlay;
     private Game game;
@@ -40,17 +43,15 @@ public class GameView implements View {
     private Pane pane = new Pane();
     private GraphicsContext plotter;
     private VBox players = new VBox();
-    private Label statusPlayers = new Label();
+    private VBox statusPlayers = new VBox();
     private Label statusPoints = new Label();
     private Label statusTurn = new Label();
     private BorderPane root = new BorderPane();
     private Scene menuScene;
 
     public GameView() throws Exception {
-        PlayerDao playerDao = null;
         List<Player> choices = null;
         try {
-            playerDao = new PlayerDao(new Database("jdbc:sqlite:MiniCatanDatabase.db"));
             choices = playerDao.findAll();
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
@@ -108,7 +109,7 @@ public class GameView implements View {
 
         dialog.getDialogPane().setContent(root);
         dialog.showAndWait();
-        
+
         if (this.game == null) {
             throw new Exception("Game not initialized.");
         }
@@ -126,6 +127,7 @@ public class GameView implements View {
         this.underlay = new Canvas(13 * scalerX, 12 * scalerY);
         this.map.getChildren().addAll(underlay, pane);
         this.plotter = underlay.getGraphicsContext2D();
+        this.statusPlayers.setPrefWidth(180);
         ArrayList<Road> roads = new ArrayList<>();
 
         this.game.getNodeWeb().getNodes().values().stream().forEach(n -> {
@@ -144,28 +146,27 @@ public class GameView implements View {
             int y = (r.getLocation1().getY() + r.getLocation2().getY()) * scalerY / 2 - 5;
             plotter.fillOval(x, y, 10, 10);
 
-            if (!this.game.getRoads().contains(r)) {
-                Button b1 = new Button("");
-                b1.setPrefSize(24, 24);
-                b1.setBackground(Background.EMPTY);
+            Button b1 = new Button("");
+            b1.setPrefSize(24, 24);
+            b1.setBackground(Background.EMPTY);
 
-                b1.setOnAction((event) -> {
-                    Road newRoad = this.game.clickRoad(r);
-                    if (newRoad != null) {
-                        plotter.setStroke(newRoad.getPlayer().getColor());
-                        plotter.setLineWidth(6);
-                        plotter.strokeLine(newRoad.getLocation1().getX() * scalerX, newRoad.getLocation1().getY() * scalerY,
-                                newRoad.getLocation2().getX() * scalerX, newRoad.getLocation2().getY() * scalerY);
-                    }
-                    System.out.println("Road clicked.");
-                    this.refreshStatus();
-                });
+            b1.setOnAction((event) -> {
+                this.game.clickRoad(r);
+                if (r.getPlayer() != null) {
+                    plotter.setStroke(r.getPlayer().getColor());
+                    plotter.setLineWidth(6);
+                    plotter.strokeLine(r.getLocation1().getX() * scalerX, r.getLocation1().getY() * scalerY,
+                            r.getLocation2().getX() * scalerX, r.getLocation2().getY() * scalerY);
+                    b1.setDisable(true);
+                }
+                System.out.println("Road clicked.");
+                this.refreshStatus();
+            });
 
-                b1.setLayoutX((((double) r.getLocation1().getX() + r.getLocation2().getX()) / 2) * scalerX - 12);
-                b1.setLayoutY((((double) r.getLocation1().getY() + r.getLocation2().getY()) / 2) * scalerY - 12);
+            b1.setLayoutX((((double) r.getLocation1().getX() + r.getLocation2().getX()) / 2) * scalerX - 12);
+            b1.setLayoutY((((double) r.getLocation1().getY() + r.getLocation2().getY()) / 2) * scalerY - 12);
 
-                pane.getChildren().add(b1);
-            }
+            pane.getChildren().add(b1);
 
         });
 
@@ -175,10 +176,10 @@ public class GameView implements View {
             Button b1 = new Button("");
             b1.setOnAction((event) -> {
                 System.out.println(k.getId() + " clicked");
-                Building newbuilding = this.game.clickNode(k);
-                if (newbuilding != null) {
-                    plotter.setFill(newbuilding.getPlayer().getColor());
-                    plotter.setStroke(newbuilding.getPlayer().getColor());
+                this.game.clickNode(k);
+                if (k.getBuilding() != null) {
+                    plotter.setFill(k.getBuilding().getPlayer().getColor());
+                    plotter.setStroke(k.getBuilding().getPlayer().getColor());
                     plotter.setLineWidth(1);
                     plotter.fillOval(k.getLocation().getX() * scalerX - 10, k.getLocation().getY() * scalerY - 10, 20, 20);
                     if (k.getBuilding().getValue() == 2) {
@@ -186,6 +187,7 @@ public class GameView implements View {
                     }
                     if (k.getBuilding().getValue() == 3) {
                         plotter.strokeOval(k.getLocation().getX() * scalerX - 14, k.getLocation().getY() * scalerY - 14, 28, 28);
+                        b1.setDisable(true);
                     }
                 }
                 this.refreshStatus();
@@ -200,7 +202,8 @@ public class GameView implements View {
         });
 
         game.getFieldWeb().getFields().stream().forEach(f -> {
-            plotter.setFont(Font.font(14));
+            plotter.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+            plotter.setFill(f.getResource().getColor());
             plotter.fillText(f.getValue() + ": " + f.getResource(), f.getLocation().getX() * scalerX, f.getLocation().getY() * scalerY);
         });
 
@@ -209,16 +212,24 @@ public class GameView implements View {
         Label victoryPoints = new Label("\nPelaajien voittopisteet:");
         victoryPoints.setFont(Font.font(16));
         Button throwTurn = new Button("Seuraava vuoro");
-
+        Button infoBtn = new Button("Info");
+        infoBtn.setPrefWidth(180);
+        throwTurn.setPrefWidth(180);
+                
         throwTurn.setOnAction((event) -> {
-            if (game.getTurn().realTurn()) {
+            if (game.isAfterInitRounds()) {
                 this.game.throwDice();
                 this.game.nextTurn();
                 this.refreshStatus();
             }
         });
+        
+        infoBtn.setOnAction((event) -> {
+            InfoView info = new InfoView();
+            info.show(stage);
+        });
 
-        players.getChildren().addAll(playersAndResources, statusPlayers, victoryPoints, statusPoints, statusTurn, throwTurn);
+        players.getChildren().addAll(playersAndResources, statusPlayers, victoryPoints, statusPoints, statusTurn, throwTurn, infoBtn);
 
         this.root.setLeft(this.players);
         this.root.setCenter(this.map);
@@ -231,9 +242,12 @@ public class GameView implements View {
         long b = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         System.out.println("FreedMemory(%): " + (double) (a - b) / Runtime.getRuntime().totalMemory() * 100);
 
-        this.statusPlayers.setText("");
+        this.statusPlayers.getChildren().clear();
         for (Player p : game.getPlayers()) {
-            this.statusPlayers.setText(this.statusPlayers.getText() + p.getStatus() + "\n");
+            Label status = new Label(p.getStatus());
+            status.setBackground(new Background(new BackgroundFill(p.getColor(),null,null)));
+            status.setPrefWidth(180);
+            this.statusPlayers.getChildren().add(status);
         }
 
         this.statusPoints.setText("");
@@ -242,15 +256,16 @@ public class GameView implements View {
         }
 
         this.statusTurn.setText("");
-        this.statusTurn.setText("\nVuorossa: " + game.getPlayerOnTurn().getName());
+        this.statusTurn.setText("\nVuorossa: " + game.getPlayerOnTurn().getName()
+                + "\nHeitetty: " + this.game.getDices().getThrowed());
 
-        if (this.game.isEnded()) {
+        if (this.game.testEnd()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle(null);
             alert.setHeaderText("Peli päättyi!");
             String text = "Pelaajat ja pisteet:\n";
             for (Player p : this.game.getPlayers()) {
-                text = text.concat(p.getName()+": "+p.getWinPoints()+"\n");
+                text = text.concat(p.getName() + ": " + p.getWinPoints() + "\n");
             }
             alert.setContentText(text);
             alert.showAndWait();

@@ -1,4 +1,5 @@
 
+import com.mycompany.domain.Building;
 import com.mycompany.domain.Player;
 import com.mycompany.domain.Resource;
 import javafx.scene.paint.Color;
@@ -16,21 +17,21 @@ public class PlayerTest {
     public void setUp() {
         this.player1 = new Player("TestPlayer",Color.BLUE);
         
-        this.player1.giveResources(Resource.Corp, 1);
-        this.player1.giveResources(Resource.Clay, 1);
-        this.player1.giveResources(Resource.Stone, 1);
-        this.player1.giveResources(Resource.Sheep, 1);
-        this.player1.giveResources(Resource.Wood, 1);
+        this.player1.giveResources(Resource.Vilja, 1);
+        this.player1.giveResources(Resource.Savi, 1);
+        this.player1.giveResources(Resource.Kivi, 1);
+        this.player1.giveResources(Resource.Lammas, 1);
+        this.player1.giveResources(Resource.Puu, 1);
     }
     
     @Test
     public void testSetUpIsRight() {
         assertEquals(Color.BLUE, this.player1.getColor());
-        int clay = this.player1.getResources().get(Resource.Clay);
-        int sheep = this.player1.getResources().get(Resource.Sheep);
-        int wood = this.player1.getResources().get(Resource.Wood);
-        int stone = this.player1.getResources().get(Resource.Stone);
-        int corp = this.player1.getResources().get(Resource.Corp);
+        int clay = this.player1.getResources().get(Resource.Savi);
+        int sheep = this.player1.getResources().get(Resource.Lammas);
+        int wood = this.player1.getResources().get(Resource.Puu);
+        int stone = this.player1.getResources().get(Resource.Kivi);
+        int corp = this.player1.getResources().get(Resource.Vilja);
         assertEquals(1, clay);
         assertEquals(1, corp);
         assertEquals(1, wood);
@@ -41,11 +42,11 @@ public class PlayerTest {
     @Test
     public void testMakeRoad() {
         assertTrue(this.player1.makeRoad());
-        int clay = this.player1.getResources().get(Resource.Clay);
-        int sheep = this.player1.getResources().get(Resource.Sheep);
-        int wood = this.player1.getResources().get(Resource.Wood);
-        int stone = this.player1.getResources().get(Resource.Stone);
-        int corp = this.player1.getResources().get(Resource.Corp);
+        int clay = this.player1.getResources().get(Resource.Savi);
+        int sheep = this.player1.getResources().get(Resource.Lammas);
+        int wood = this.player1.getResources().get(Resource.Puu);
+        int stone = this.player1.getResources().get(Resource.Kivi);
+        int corp = this.player1.getResources().get(Resource.Vilja);
         assertEquals(0, clay);
         assertEquals(1, corp);
         assertEquals(0, wood);
@@ -58,11 +59,11 @@ public class PlayerTest {
     public void testMakeBuilding() {
         assertTrue(this.player1.makeBuilding());
         assertFalse(this.player1.makeBuilding());
-        int clay = this.player1.getResources().get(Resource.Clay);
-        int sheep = this.player1.getResources().get(Resource.Sheep);
-        int wood = this.player1.getResources().get(Resource.Wood);
-        int stone = this.player1.getResources().get(Resource.Stone);
-        int corp = this.player1.getResources().get(Resource.Corp);
+        int clay = this.player1.getResources().get(Resource.Savi);
+        int sheep = this.player1.getResources().get(Resource.Lammas);
+        int wood = this.player1.getResources().get(Resource.Puu);
+        int stone = this.player1.getResources().get(Resource.Kivi);
+        int corp = this.player1.getResources().get(Resource.Vilja);
         assertEquals(0, clay);
         assertEquals(0, corp);
         assertEquals(0, wood);
@@ -73,14 +74,14 @@ public class PlayerTest {
     @Test
     public void testUpgradeBuildingAndGiveResources() {
         assertFalse(this.player1.upgradeBuilding());
-        this.player1.giveResources(Resource.Corp, 1);
-        this.player1.giveResources(Resource.Stone, 2);
+        this.player1.giveResources(Resource.Vilja, 1);
+        this.player1.giveResources(Resource.Kivi, 2);
         assertTrue(this.player1.upgradeBuilding());
-        int clay = this.player1.getResources().get(Resource.Clay);
-        int sheep = this.player1.getResources().get(Resource.Sheep);
-        int wood = this.player1.getResources().get(Resource.Wood);
-        int stone = this.player1.getResources().get(Resource.Stone);
-        int corp = this.player1.getResources().get(Resource.Corp);
+        int clay = this.player1.getResources().get(Resource.Savi);
+        int sheep = this.player1.getResources().get(Resource.Lammas);
+        int wood = this.player1.getResources().get(Resource.Puu);
+        int stone = this.player1.getResources().get(Resource.Kivi);
+        int corp = this.player1.getResources().get(Resource.Vilja);
         assertEquals(1, clay);
         assertEquals(0, corp);
         assertEquals(1, wood);
@@ -114,10 +115,10 @@ public class PlayerTest {
     }
     
     @Test
-    public void testSetAndGetWinPoints() {
+    public void testGetWinPoints() {
         assertEquals(0, this.player1.getWinPoints());
-        this.player1.setWinPoints(2);
-        assertEquals(2, this.player1.getWinPoints());
+        this.player1.getBuildings().add(new Building(this.player1));
+        assertEquals(1, this.player1.getWinPoints());
     }
     
     @Test
@@ -125,10 +126,8 @@ public class PlayerTest {
         Player player2 = new Player("TestPlayer2",Color.BLUE);
         assertEquals(0, player2.compareTo(this.player1));
         
-        player2.setWinPoints(1);
+        player2.getBuildings().add(new Building(player2));
         assertEquals(-1, player2.compareTo(this.player1));
-        
-        this.player1.setWinPoints(2);
-        assertEquals(1, player2.compareTo(this.player1));
+
     }
 }

@@ -35,10 +35,10 @@ public class NodeTest {
         this.node.upgradeBuilding();
         assertEquals(2,this.node.getBuilding().getValue());
         
-        int clays = this.node.getBuilding().getPlayer().getResources().get(Resource.Clay);
+        int clays = this.node.getBuilding().getPlayer().getResources().get(Resource.Savi);
         assertEquals(0,clays);
-        this.node.produce(Resource.Clay);
-        clays = this.node.getBuilding().getPlayer().getResources().get(Resource.Clay);
+        this.node.produce(Resource.Savi);
+        clays = this.node.getBuilding().getPlayer().getResources().get(Resource.Savi);
         assertEquals(2,clays);
     }
 

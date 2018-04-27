@@ -5,6 +5,7 @@
  */
 package com.mycompany.gui;
 
+import com.mycompany.database.DaoResources;
 import com.mycompany.database.Database;
 import com.mycompany.database.PlayerDao;
 import com.mycompany.domain.Player;
@@ -28,12 +29,11 @@ import javafx.stage.Stage;
  *
  * @author Jake
  */
-public class NewPlayerView implements View {
+public class NewPlayerView implements View, DaoResources {
 
     @Override
     public void show(Stage stage) {
         try {
-            PlayerDao playerDao = new PlayerDao(new Database("jdbc:sqlite:MiniCatanDatabase.db"));
             Dialog<List<Player>> dialog = new Dialog<>();
             VBox view = new VBox();
 

@@ -15,9 +15,9 @@ public class FieldWeb {
             values.add(i);
         });
         ArrayList<Resource> resources = new ArrayList<>();
-        Arrays.asList(Resource.Clay, Resource.Clay, Resource.Clay, Resource.Corp, Resource.Corp, Resource.Corp, Resource.Corp, Resource.Sheep, Resource.Sheep, 
-                Resource.Sheep, Resource.Sheep, Resource.Stone, Resource.Stone, Resource.Stone, Resource.Wood, Resource.Wood, Resource.Wood, Resource.Wood, 
-                Resource.Clay).stream().forEach(i-> {
+        Arrays.asList(Resource.Savi, Resource.Savi, Resource.Savi, Resource.Vilja, Resource.Vilja, Resource.Vilja, Resource.Vilja, Resource.Lammas, Resource.Lammas, 
+                Resource.Lammas, Resource.Lammas, Resource.Kivi, Resource.Kivi, Resource.Kivi, Resource.Puu, Resource.Puu, Resource.Puu, Resource.Puu, 
+                Resource.Savi).stream().forEach(i-> {
                     resources.add(i);
                 });
         

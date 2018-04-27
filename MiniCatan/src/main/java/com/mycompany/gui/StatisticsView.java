@@ -1,5 +1,6 @@
 package com.mycompany.gui;
 
+import com.mycompany.database.DaoResources;
 import com.mycompany.database.Database;
 import com.mycompany.database.StatisticsDao;
 import com.mycompany.domain.Player;
@@ -22,7 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class StatisticsView implements View {
+public class StatisticsView implements View, DaoResources {
 
     @Override
     public void show(Stage stage) {
@@ -49,12 +50,10 @@ public class StatisticsView implements View {
         
         
         table.getColumns().addAll(name,playedGames,winRatio);
-
         try {
             ObservableList<StatisticsBuilder> data = FXCollections.observableArrayList();
-            StatisticsDao dao = new StatisticsDao(new Database("jdbc:sqlite:MiniCatanDatabase.db"));
             
-            dao.findAll().stream().forEach(s-> {
+            statDao.findAll().stream().forEach(s-> {
                 data.add(s);
             });
             

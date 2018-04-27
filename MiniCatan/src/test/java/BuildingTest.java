@@ -34,26 +34,26 @@ public class BuildingTest {
     
     @Test
     public void testProduce() {
-        int clay = this.player.getResources().get(Resource.Clay);
-        int sheep = this.player.getResources().get(Resource.Sheep);
-        int wood = this.player.getResources().get(Resource.Wood);
-        int stone = this.player.getResources().get(Resource.Stone);
-        int corp = this.player.getResources().get(Resource.Corp);
+        int clay = this.player.getResources().get(Resource.Savi);
+        int sheep = this.player.getResources().get(Resource.Lammas);
+        int wood = this.player.getResources().get(Resource.Puu);
+        int stone = this.player.getResources().get(Resource.Kivi);
+        int corp = this.player.getResources().get(Resource.Vilja);
         assertEquals(0, clay);
         assertEquals(0, corp);
         assertEquals(0, wood);
         assertEquals(0, sheep);
         assertEquals(0, stone);
-        this.building.produce(Resource.Corp);
-        this.building.produce(Resource.Clay);
-        this.building.produce(Resource.Sheep);
-        this.building.produce(Resource.Stone);
-        this.building.produce(Resource.Wood);
-        clay = this.player.getResources().get(Resource.Clay);
-        sheep = this.player.getResources().get(Resource.Sheep);
-        wood = this.player.getResources().get(Resource.Wood);
-        stone = this.player.getResources().get(Resource.Stone);
-        corp = this.player.getResources().get(Resource.Corp);
+        this.building.produce(Resource.Vilja);
+        this.building.produce(Resource.Savi);
+        this.building.produce(Resource.Lammas);
+        this.building.produce(Resource.Kivi);
+        this.building.produce(Resource.Puu);
+        clay = this.player.getResources().get(Resource.Savi);
+        sheep = this.player.getResources().get(Resource.Lammas);
+        wood = this.player.getResources().get(Resource.Puu);
+        stone = this.player.getResources().get(Resource.Kivi);
+        corp = this.player.getResources().get(Resource.Vilja);
         assertEquals(1, clay);
         assertEquals(1, corp);
         assertEquals(1, wood);

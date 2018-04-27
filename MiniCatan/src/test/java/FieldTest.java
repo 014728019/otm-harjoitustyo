@@ -20,13 +20,13 @@ public class FieldTest {
     
     @Before
     public void setUp() {
-        this.field = new Field(Resource.Corp, 7, null, null);
+        this.field = new Field(Resource.Vilja, 7, null, null);
     }
     
     @Test
     public void testResource() {
-        assertFalse(Resource.Clay.equals(this.field.getResource()));
-        assertTrue(Resource.Corp.equals(this.field.getResource()));
+        assertFalse(Resource.Savi.equals(this.field.getResource()));
+        assertTrue(Resource.Vilja.equals(this.field.getResource()));
     }
     
     @Test

@@ -80,6 +80,5 @@ public class StatisticsBuilder {
     public int getPlayersOnGame() {
         return playersOnThisGame;
     }
-
     
 }
