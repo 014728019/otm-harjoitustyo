@@ -12,4 +12,5 @@
 | 24.4. | 4    | Testejä, varmistettu että .jar tiedoston voi generoida, README päivitetty, jne. |
 | 26.4. | 3 | Muokattu tietokannan rakennetta ja lisätty toiminnallisuus pelitulosten tallentamiseen ja tilastointiin. |
 | 27.4. | 3 | Muokattu tietokannan toimintaa ja muokattu Game olion rakennetta. |
-|  | 28.5    |  |
+| 2.5. | 4 | Tehty JavaDocceja, Arkkitehtuurikuvausta, testejä jne. |
+|  | 32.5    |  |
