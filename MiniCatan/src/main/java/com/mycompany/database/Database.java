@@ -15,7 +15,7 @@ public class Database {
         this.databaseAddress = databaseAddress;
         this.init();
     }
-
+    
     public Connection getConnection() throws SQLException {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
         if (dbUrl != null && dbUrl.length() > 0) {

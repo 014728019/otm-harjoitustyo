@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Objects;
 import javafx.scene.paint.Color;
 
+/**
+ * Player in game.
+ */
 public class Player implements Comparable<Player> {
     private String name;
     private HashMap<Resource, Integer> resources;
@@ -26,7 +29,10 @@ public class Player implements Comparable<Player> {
         this.resources.put(Resource.Kivi, 0);
         this.resources.put(Resource.Puu, 0);
     }
-
+    
+    /**
+     * @return <i>int</i> - sum from building values
+     */
     public int getWinPoints() {
         return this.buildings.stream().mapToInt(m -> m.getValue()).sum();
     }
@@ -43,6 +49,11 @@ public class Player implements Comparable<Player> {
         return resources;
     }
     
+    /**
+     * @return <i>true</i> - if player has resources to make road(and decrease 
+     * players resources)
+     * <br>   <i>false</i> - otherwise
+     */
     public boolean makeRoad() {
         if (this.resources.get(Resource.Savi) >= 1 && this.resources.get(Resource.Puu) >= 1) {
             int clays = this.resources.get(Resource.Savi);
@@ -56,6 +67,11 @@ public class Player implements Comparable<Player> {
         return false;
     }
     
+    /**
+     * @return <i>true</i> - if player has resources to make building(and decrease 
+     * players resources)
+     * <br>   <i>false</i> - otherwise
+     */
     public boolean makeBuilding() {
         if (this.resources.get(Resource.Savi) >= 1 && this.resources.get(Resource.Puu) >= 1
                 && this.resources.get(Resource.Lammas) >= 1 && this.resources.get(Resource.Vilja) >= 1) {
@@ -76,6 +92,11 @@ public class Player implements Comparable<Player> {
         return false;
     }
     
+    /**
+     * @return <i>true</i> - if player has resources to upgrade building(and 
+     * decrease players resources)
+     * <br>   <i>false</i> - otherwise
+     */
     public boolean upgradeBuilding() {
         if (this.resources.get(Resource.Kivi) >= 3 && this.resources.get(Resource.Vilja) >= 2) {
             int stone = this.resources.get(Resource.Kivi);
@@ -89,6 +110,11 @@ public class Player implements Comparable<Player> {
         return false;
     }
     
+    /**
+     * Gives a number of resources to the player.
+     * @param resource
+     * @param number 
+     */
     public void giveResources(Resource resource, int number) {
         this.resources.replace(resource, this.resources.get(resource) + number);
     }
@@ -101,8 +127,11 @@ public class Player implements Comparable<Player> {
         return name;
     }
     
+    /**
+     * @return <i>String</i> - player name and amount of resources
+     */
     public String getStatus() {
-        return this.name+
+        return this.name + 
                 "\n\tSavi: " + this.resources.get(Resource.Savi) +
                 "\n\tPuu: " + this.resources.get(Resource.Puu) +
                 "\n\tLammas: " + this.resources.get(Resource.Lammas) +
@@ -110,6 +139,11 @@ public class Player implements Comparable<Player> {
                 "\n\tKivi: " + this.resources.get(Resource.Kivi);
     }
     
+    /**
+     * @param obj
+     * @return <i>true</i> - if players have same name
+     * <br>   <i>false</i> - otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -124,9 +158,14 @@ public class Player implements Comparable<Player> {
         }
         return true;
     }
-
+    
+    /**
+     * For sorting list of players to unnatural order(player with highest count 
+     * of win points on top).
+     * @param player
+     */
     @Override
-    public int compareTo(Player o) {
-        return o.getWinPoints() - this.getWinPoints();
+    public int compareTo(Player player) {
+        return player.getWinPoints() - this.getWinPoints();
     }
 }

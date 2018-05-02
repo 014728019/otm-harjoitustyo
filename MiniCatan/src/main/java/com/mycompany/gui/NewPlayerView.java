@@ -48,10 +48,10 @@ public class NewPlayerView implements View, DaoResources {
                 if (input.getText().length() >= 1 && input.getText().length() <= 50) {
                     try {
                         Player player = new Player(input.getText(), null);
-                        if (playerDao.findAll().contains(player)) {
+                        if (PLAYERDAO.findAll().contains(player)) {
                             throw new Exception("Tietokannasta löytyi pelaaja entuudestaan kyseisellä nimellä! Valitse toinen nimi!");
                         }
-                        playerDao.add(player);
+                        PLAYERDAO.add(player);
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle(null);
                         alert.setHeaderText(null);

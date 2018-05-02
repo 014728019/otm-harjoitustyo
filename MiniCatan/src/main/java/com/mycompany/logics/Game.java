@@ -10,6 +10,9 @@ import com.mycompany.domain.Road;
 import com.mycompany.domain.StatisticsBuilder;
 import java.util.ArrayList;
 
+/**
+ * Class manages game functionality.
+ */
 public class Game implements DaoResources {
 
     private Turn turn;
@@ -32,7 +35,12 @@ public class Game implements DaoResources {
     public int getWinPointsLimit() {
         return winPointsLimit;
     }
-
+    
+    /**
+     * Realizes the functionality when a player presses the road button. 
+     *
+     * @param   road   clicked road
+     */
     public void clickRoad(Road road) {
         if (road.getPlayer() == null && this.playerHasPathToRoad(road)) {
             if (this.turn.getPlayer().makeRoad()) {
@@ -42,7 +50,7 @@ public class Game implements DaoResources {
         }
     }
 
-    public boolean playerHasPathToRoad(Road road) {
+    private boolean playerHasPathToRoad(Road road) {
         if (road.getNode1().getBuilding() != null && road.getNode1().getBuilding().getPlayer().equals(this.turn.getPlayer())) {
             return true;
         }
@@ -56,7 +64,12 @@ public class Game implements DaoResources {
         }
         return false;
     }
-
+    
+    /**
+     * Realizes the functionality when a player presses the node button. 
+     *
+     * @param   node   clicked node
+     */
     public void clickNode(Node node) {
         if (this.nodeIsFreeToBuild(node) && this.buildsOnFirst2Round()) {
             this.makeBuilding(node);
@@ -75,13 +88,13 @@ public class Game implements DaoResources {
         }
     }
 
-    public void makeBuilding(Node node) {
+    private void makeBuilding(Node node) {
         Building b = new Building(this.turn.getPlayer());
         this.turn.getPlayer().getBuildings().add(b);
         node.makeBuilding(b);
     }
 
-    public boolean nodeIsFreeToBuild(Node node) {
+    private boolean nodeIsFreeToBuild(Node node) {
         if (node.getBuilding() == null && node.getNeighbours().stream()
                 .map(n -> this.nodeWeb.getNode(n))
                 .filter(n -> n.getBuilding() != null).count() == 0) {
@@ -90,20 +103,24 @@ public class Game implements DaoResources {
         return false;
     }
 
-    public boolean buildsOnFirst2Round() {
+    private boolean buildsOnFirst2Round() {
         if (this.turn.getPlayer().getBuildings().size() < 2) {
             return true;
         }
         return false;
     }
 
-    public boolean playerHasPathToNode(Node node) {
+    private boolean playerHasPathToNode(Node node) {
         if (this.turn.getPlayer().getRoads().stream().filter(r -> r.inTouch(node)).count() >= 1) {
             return true;
         }
         return false;
     }
-
+    
+    /**
+     * @return <i>true</i> - if there is 2 initialization rounds past
+     * <br>   <i>false</i> - otherwise
+     */
     public boolean isAfterInitRounds() {
         return this.turn.realTurn();
     }
@@ -123,7 +140,10 @@ public class Game implements DaoResources {
     public FieldWeb getFieldWeb() {
         return this.fieldWeb;
     }
-
+    
+    /**
+     * Throw dices and collect resources from fields to players.
+     */
     public void throwDice() {
         this.dices.throwDices();
 
@@ -135,22 +155,32 @@ public class Game implements DaoResources {
                     });
                 });
     }
-
+    
+    /**
+     * Set the turn to the next player.
+     */
     public void nextTurn() {
         this.turn.next();
-        this.testEnd();
     }
-
+    
+    /**
+     * @return  <i>Player</i> - in turn
+     */
     public Player getPlayerOnTurn() {
         return this.turn.getPlayer();
     }
-
+    
+    /**
+     * Test if some player has enough win points to win. 
+     * @return <i>true</i> - if some player have won
+     * <br>   <i>false</i> - otherwise
+     */
     public boolean testEnd() {
         if (this.players.stream().mapToInt(p -> p.getWinPoints()).max().getAsInt() >= this.winPointsLimit) {
             System.out.println("Game over!");
             try {
                 for (Player p : this.players) {
-                    statDao.add(new StatisticsBuilder(p, this));
+                    STATDAO.add(new StatisticsBuilder(p, this));
                 }
             } catch (Exception e) {
                 System.out.println("Players statistics couldn't be saved to database.");

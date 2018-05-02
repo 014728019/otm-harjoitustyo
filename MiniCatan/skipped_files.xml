@@ -9,5 +9,6 @@
     <suppress files="com.mycompany.gui.InfoView.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="com.mycompany.gui.MenuView.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="com.mycompany.gui.NewPlayerView.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="com.mycompany.gui.StatisticsView.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="com.mycompany.gui.View.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

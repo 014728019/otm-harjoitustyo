@@ -52,7 +52,7 @@ public class GameView implements View, DaoResources {
     public GameView() throws Exception {
         List<Player> choices = null;
         try {
-            choices = playerDao.findAll();
+            choices = PLAYERDAO.findAll();
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
         }
@@ -138,7 +138,7 @@ public class GameView implements View, DaoResources {
                 }
             });
         });
-
+        
         roads.stream().forEach(r -> {
             plotter.strokeLine(r.getLocation1().getX() * scalerX, r.getLocation1().getY() * scalerY,
                     r.getLocation2().getX() * scalerX, r.getLocation2().getY() * scalerY);

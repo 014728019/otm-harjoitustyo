@@ -49,11 +49,11 @@ public class StatisticsView implements View, DaoResources {
         winRatio.setCellValueFactory(new PropertyValueFactory<>("winRatio"));
         
         
-        table.getColumns().addAll(name,playedGames,winRatio);
+        table.getColumns().addAll(name, playedGames, winRatio);
         try {
             ObservableList<StatisticsBuilder> data = FXCollections.observableArrayList();
             
-            statDao.findAll().stream().forEach(s-> {
+            STATDAO.findAll().stream().forEach(s-> {
                 data.add(s);
             });
             

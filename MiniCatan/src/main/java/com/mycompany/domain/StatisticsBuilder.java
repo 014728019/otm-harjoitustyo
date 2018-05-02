@@ -34,7 +34,7 @@ public class StatisticsBuilder {
         
         for (int i = 0; i < playersSorted.size(); i++) {
             if (playersSorted.get(i).equals(player)) {
-                this.placement = i+1;
+                this.placement = i + 1;
                 break;
             }
         }
@@ -62,7 +62,7 @@ public class StatisticsBuilder {
     public double getAverageWinPointsFromLimit() {
         double avgLimit = this.winPointLimits.stream().mapToDouble(m -> (double) m).average().orElse(0);
         double avgPoints = this.winPoints.stream().mapToDouble(m -> (double) m).average().orElse(0);
-        return avgPoints/avgLimit;
+        return avgPoints / avgLimit;
     }
 
     public int getPlacement() {

@@ -69,7 +69,7 @@ public class StatisticsDao implements Dao<StatisticsBuilder, String> {
         stmt.close();
         connection.close();
         
-        System.out.println("Adding game data secceeded from player: "+o.getName());
+        System.out.println("Adding game data secceeded from player: " + o.getName());
     }
 
 }

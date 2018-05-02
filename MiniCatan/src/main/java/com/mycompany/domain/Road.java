@@ -2,8 +2,10 @@ package com.mycompany.domain;
 
 import java.util.Objects;
 
+/**
+ * Road connect 2 nodes on the game and could have owner.
+ */
 public class Road {
-
     private Player player;
     private Node node1;
     private Node node2;
@@ -25,11 +27,17 @@ public class Road {
     public Node getNode2() {
         return node2;
     }
-
+    
+    /**
+     * @return <i>Location</i> - location of 1st node
+     */
     public Location getLocation1() {
         return this.node1.getLocation();
     }
-
+    
+    /**
+     * @return <i>Location</i> - location of 2nd node
+     */
     public Location getLocation2() {
         return this.node2.getLocation();
     }
@@ -37,32 +45,48 @@ public class Road {
     public Player getPlayer() {
         return player;
     }
-
-    public boolean inTouch(Road r) {
-        if (this.node1.equals(r.getNode1()) || this.node2.equals(r.getNode1())) {
-            if (r.getNode1().getBuilding() == null) {
+    
+    /**
+     * @param road
+     * @return <i>true</i> - if roads have common node and node doesn't have building 
+     * or building is owned by roads owner
+     * <br>    <i>false</i> - otherwise
+     */
+    public boolean inTouch(Road road) {
+        if (this.node1.equals(road.getNode1()) || this.node2.equals(road.getNode1())) {
+            if (road.getNode1().getBuilding() == null) {
                 return true;
-            } else if (r.getNode1().getBuilding().getPlayer().equals(this.player)) {
+            } else if (road.getNode1().getBuilding().getPlayer().equals(this.player)) {
                 return true;
             }
         }
-        if (this.node1.equals(r.getNode2()) || this.node2.equals(r.getNode2())) {
-            if (r.getNode2().getBuilding() == null) {
+        if (this.node1.equals(road.getNode2()) || this.node2.equals(road.getNode2())) {
+            if (road.getNode2().getBuilding() == null) {
                 return true;
-            } else if (r.getNode2().getBuilding().getPlayer().equals(this.player)) {
+            } else if (road.getNode2().getBuilding().getPlayer().equals(this.player)) {
                 return true;
             }
         }
         return false;
     }
-
+    /**
+     * 
+     * @param node
+     * @return <i>true</i> - if one of the two endpoints is this node
+     * <br>    <i>false</i> - otherwise
+     */
     public boolean inTouch(Node node) {
         if (this.node1.getId().equals(node.getId()) || this.node2.getId().equals(node.getId())) {
             return true;
         }
         return false;
     }
-
+    
+    /**
+     * @param obj
+     * @return <i>true</i> - if both roads have same endpoints
+     * <br>   <i>false</i> - otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
