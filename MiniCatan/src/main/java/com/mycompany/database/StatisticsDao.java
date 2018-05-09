@@ -40,7 +40,7 @@ public class StatisticsDao implements Dao<StatisticsBuilder, String> {
             ResultSet rs1 = stmt1.executeQuery();
             
             while (rs1.next()) {
-                o.add(rs1.getInt(2), rs1.getInt(3), rs1.getInt(4), rs1.getInt(5));
+                o.add(rs1.getInt(3), rs1.getInt(4), rs1.getInt(5), rs1.getInt(6));
             }
             
             builder.add(o);
@@ -69,7 +69,7 @@ public class StatisticsDao implements Dao<StatisticsBuilder, String> {
         stmt.close();
         connection.close();
         
-        System.out.println("Adding game data secceeded from player: " + o.getName());
+        System.out.println("Adding game data succeeded from player: " + o.getName());
     }
 
 }

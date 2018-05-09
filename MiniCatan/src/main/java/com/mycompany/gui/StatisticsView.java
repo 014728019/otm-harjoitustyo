@@ -27,7 +27,7 @@ public class StatisticsView implements View, DaoResources {
 
     @Override
     public void show(Stage stage) {
-        Dialog<List<Player>> dialog = new Dialog<>();
+        Dialog dialog = new Dialog<>();
         VBox view = new VBox();
         dialog.getDialogPane().setContent(view);
 
@@ -44,8 +44,8 @@ public class StatisticsView implements View, DaoResources {
         playedGames.setMinWidth(100);
         playedGames.setCellValueFactory(new PropertyValueFactory<>("gamesCount"));
         
-        TableColumn winRatio = new TableColumn("Voitto osuus(%)");
-        winRatio.setMinWidth(120);
+        TableColumn winRatio = new TableColumn("Voitto suhde");
+        winRatio.setMinWidth(100);
         winRatio.setCellValueFactory(new PropertyValueFactory<>("winRatio"));
         
         

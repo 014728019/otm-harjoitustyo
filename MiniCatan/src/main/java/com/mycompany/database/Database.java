@@ -46,15 +46,14 @@ public class Database {
     private List<String> sqliteCommands() {
         ArrayList<String> list = new ArrayList<>();
 
-        list.add("CREATE TABLE Player (name varchar(50) PRIMARY KEY);");
-        list.add("CREATE TABLE GameTable ("
+        list.add("CREATE TABLE IF NOT EXISTS Player (name varchar(50) PRIMARY KEY);");
+        list.add("CREATE TABLE IF NOT EXISTS GameTable ("
+                + "id integer PRIMARY KEY, "
                 + "player varchar(50), "
                 + "playersOnGame integer, "
                 + "placement integer, "
                 + "winPointLimit integer, "
                 + "winPoints integer);");
-        list.add("INSERT INTO Player (name) VALUES ('Pelaaja1');");
-        list.add("INSERT INTO Player (name) VALUES ('Pelaaja2');");
 
         return list;
     }

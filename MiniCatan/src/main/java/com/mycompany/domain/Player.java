@@ -168,4 +168,13 @@ public class Player implements Comparable<Player> {
     public int compareTo(Player player) {
         return player.getWinPoints() - this.getWinPoints();
     }
+    
+    public boolean changeResources3to1(Resource playerGive, Resource playerWant) {
+        if (this.resources.get(playerGive) >= 3) {
+            this.resources.replace(playerGive, (this.resources.get(playerGive)-3));
+            this.resources.replace(playerWant, (this.resources.get(playerWant)+1));
+            return true;
+        }
+        return false;
+    }
 }

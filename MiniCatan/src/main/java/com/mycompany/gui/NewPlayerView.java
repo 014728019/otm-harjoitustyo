@@ -34,7 +34,7 @@ public class NewPlayerView implements View, DaoResources {
     @Override
     public void show(Stage stage) {
         try {
-            Dialog<List<Player>> dialog = new Dialog<>();
+            Dialog dialog = new Dialog<>();
             VBox view = new VBox();
 
             Label head = new Label("Luo uusi pelaaja\n");

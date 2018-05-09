@@ -5,6 +5,7 @@ import com.mycompany.database.Database;
 import com.mycompany.database.PlayerDao;
 import com.mycompany.domain.Building;
 import com.mycompany.domain.Player;
+import com.mycompany.domain.Resource;
 import com.mycompany.domain.Road;
 import com.mycompany.logics.Game;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class GameView implements View, DaoResources {
             System.out.println("ERROR: " + e);
         }
 
-        Dialog<List<Player>> dialog = new Dialog<>();
+        Dialog dialog = new Dialog<>();
         BorderPane root = new BorderPane();
         VBox view = new VBox();
         view.setPrefHeight(220);
@@ -78,7 +79,7 @@ public class GameView implements View, DaoResources {
         ArrayList<Player> players = new ArrayList<>();
 
         choice.setOnAction((event) -> {
-            if (players.size() < 4) {
+            if (players.size() < 4 && choice.getValue() != null) {
                 players.add(new Player(choice.getValue().toString(), colors.get(0)));
                 colors.remove(0);
                 view.getChildren().add(new Label(choice.getValue().toString()));
@@ -138,7 +139,7 @@ public class GameView implements View, DaoResources {
                 }
             });
         });
-        
+
         roads.stream().forEach(r -> {
             plotter.strokeLine(r.getLocation1().getX() * scalerX, r.getLocation1().getY() * scalerY,
                     r.getLocation2().getX() * scalerX, r.getLocation2().getY() * scalerY);
@@ -213,9 +214,11 @@ public class GameView implements View, DaoResources {
         victoryPoints.setFont(Font.font(16));
         Button throwTurn = new Button("Seuraava vuoro");
         Button infoBtn = new Button("Info");
+        Button changeResources = new Button("Vaihda resursseja 3:1");
         infoBtn.setPrefWidth(180);
         throwTurn.setPrefWidth(180);
-                
+        changeResources.setPrefWidth(180);
+
         throwTurn.setOnAction((event) -> {
             if (game.isAfterInitRounds()) {
                 this.game.throwDice();
@@ -223,13 +226,50 @@ public class GameView implements View, DaoResources {
                 this.refreshStatus();
             }
         });
-        
+
         infoBtn.setOnAction((event) -> {
             InfoView info = new InfoView();
             info.show(stage);
         });
 
-        players.getChildren().addAll(playersAndResources, statusPlayers, victoryPoints, statusPoints, statusTurn, throwTurn, infoBtn);
+        changeResources.setOnAction((event) -> {
+            Dialog dialog = new Dialog<>();
+            VBox root = new VBox();
+            root.setPrefWidth(250);
+            
+            Label playerGiveL = new Label("Annan pois 3 resurssia:");
+            Label playerWantL = new Label("Haluan resurssin:");
+            Label infoL = new Label(" ");
+            
+            ChoiceBox playerGive = new ChoiceBox(FXCollections.observableArrayList(
+                    Resource.Kivi, Resource.Lammas, Resource.Puu, Resource.Savi, Resource.Vilja));
+            playerGive.getSelectionModel().select(0);
+            
+            ChoiceBox playerWant = new ChoiceBox(FXCollections.observableArrayList(
+                    Resource.Kivi, Resource.Lammas, Resource.Puu, Resource.Savi, Resource.Vilja));
+            playerWant.getSelectionModel().select(0);
+            
+            Button executeChange = new Button("Vaihda");
+            
+            executeChange.setOnAction((event1)-> {
+                if (this.game.changeResources((Resource)playerGive.getValue(), (Resource)playerWant.getValue())) {
+                    infoL.setText("Vaihto onnistui!");
+                    this.refreshStatus();
+                } else {
+                    infoL.setText("Sinulla ei ole tarpeeksi resursseja!");
+                }
+            });
+
+            root.getChildren().addAll(playerGiveL, playerGive, playerWantL, playerWant, infoL, executeChange);
+
+            ButtonType cancelButton = new ButtonType("Takaisin", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialog.getDialogPane().getButtonTypes().addAll(cancelButton);
+
+            dialog.getDialogPane().setContent(root);
+            dialog.showAndWait();
+        });
+
+        players.getChildren().addAll(playersAndResources, statusPlayers, victoryPoints, statusPoints, statusTurn, throwTurn, infoBtn, changeResources);
 
         this.root.setLeft(this.players);
         this.root.setCenter(this.map);
@@ -245,7 +285,7 @@ public class GameView implements View, DaoResources {
         this.statusPlayers.getChildren().clear();
         for (Player p : game.getPlayers()) {
             Label status = new Label(p.getStatus());
-            status.setBackground(new Background(new BackgroundFill(p.getColor(),null,null)));
+            status.setBackground(new Background(new BackgroundFill(p.getColor(), null, null)));
             status.setPrefWidth(180);
             this.statusPlayers.getChildren().add(status);
         }

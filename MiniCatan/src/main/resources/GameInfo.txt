@@ -9,3 +9,39 @@ Pelin aloittaminen:
     1. Paina alkuvalikosta nappia "Uusi peli".
     2. Lisää pelaajat valintaikkunasta painamalla pelaajan nimeä.
     3. Paina "Aloita peli" nappia, pelissä kuitenkin täytyy olla 2-4 pelaajaa.
+
+Pelin kulku:
+	1. Ensimmäisellä kierroksella pelaajat rakentavat yhden kylän vuorollaan. Vuoro
+	vuoro vaihtuu automaattisesti kun kylä on asetettu. Toisella kierroksella pelaajat
+	tekevät saman, mutta päinvastaisessa järjestyksessä. Tämän jälkeen on sen pelaajan
+	vuoro, joka rakensi ensimmäisenä ja viimeisenä kylän ja tämä on ensimmäinen 
+	normaali vuoro.
+
+	2. Vuoron alkaessa heitetään noppaa(tapahtuu automaattisesti), jonka jälkeen 
+	pelaajat saavat resursseja, jos pelaajan jokin kylä on rakennettu resurssiruudun 
+	(jonka silmäluku heitettiin) viereen. Vuorollaan pelaaja voi rakentaa teitä ja 
+	kyliä. Pelaaja voi myös kehittää omia kyliään korkeammalle tasolle(max. 3).
+
+	3. Pelin voittaa se, kuka saavuttaa ensimmäisenä sovitun voittopiste määrän. 
+	Pelaajan voittopisteet lasketaan pelaajan kylien tasojen summana.
+
+Rakentamisen hinnat:
+	Kylä: 1 vilja, 1 savi, 1 puu, 1 lammas (poikkeuksena ensimmäiset 2 kierrosta)
+	Tie: 1 savi, 1 puu
+	Kylän kehitys: 3 kiveä, 2 viljaa
+
+Rakentamisen rajoitteita:
+	- Kylää ei voi rakentaa risteykseen, jos sen viereisessä risteyksessä on kylä.
+	- Tien rakentamiseen vaaditaan, että tien jommassa kummassa pääteristeyksessä
+	on pelaajan kylä TAI risteykseen tulee pelaajan toinen tie ja risteyksessä ei
+	ole vastustajan kylää.
+
+Muuta:
+	- Pelaajat saavat kylästä resursseja kylän tason verran.
+	- Pelaajat suorittavat rakentamisen painamalla kartasta risteyksiä(kylän rakentaminen
+	tai kehitys) tai niiden välissä olevia teitä(tien rakennus).
+	- Vuoro vaihtuu "Seuraava vuoro" painikkeesta.
+	- Peli voi päättyä pattitilanteeseen, eli silloin kukaan pelaajista ei voi voittaa.
+	Silloin peli ei lopu itsestään, joten pelaajien tulee käynnistää ohjelma uudelleen, 
+	jos haluavat pelata uudestaan. Pattitilanne tuloksia ei tallenneta tietokantaan.
+	- Tilastoja voi tarkastella aloitusvalikon "Tilastoja" painikkeesta.

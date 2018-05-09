@@ -21,7 +21,7 @@ public class InfoView implements View{
     
     @Override
     public void show(Stage stage) {
-        Dialog<List<Player>> dialog = new Dialog<>();
+        Dialog dialog = new Dialog<>();
         VBox view = new VBox();
         dialog.getDialogPane().setContent(view);
 
@@ -29,7 +29,7 @@ public class InfoView implements View{
         head.setFont(Font.font(18));
 
         TextArea text = new TextArea();
-        text.setPrefSize(500, 400);
+        text.setPrefSize(600, 500);
         text.setEditable(false);
 
         try {

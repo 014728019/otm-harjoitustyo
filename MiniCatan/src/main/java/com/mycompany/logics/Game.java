@@ -6,6 +6,7 @@ import com.mycompany.domain.FieldWeb;
 import com.mycompany.domain.Node;
 import com.mycompany.domain.NodeWeb;
 import com.mycompany.domain.Player;
+import com.mycompany.domain.Resource;
 import com.mycompany.domain.Road;
 import com.mycompany.domain.StatisticsBuilder;
 import java.util.ArrayList;
@@ -190,5 +191,11 @@ public class Game implements DaoResources {
         }
         return false;
     }
-
+    
+    public boolean changeResources(Resource playerGive, Resource playerWant) {
+        if (this.getPlayerOnTurn().changeResources3to1(playerGive, playerWant)) {
+            return true;
+        }
+        return false;
+    }
 }
