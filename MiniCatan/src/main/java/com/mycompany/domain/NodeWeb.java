@@ -15,7 +15,10 @@ import javax.imageio.ImageIO;
 public class NodeWeb {
 
     private HashMap<String, Node> nodes;
-
+    
+    /**
+     * Constructor create web from nodes.
+     */
     public NodeWeb() {
         this.nodes = new HashMap<>();
 
@@ -81,10 +84,16 @@ public class NodeWeb {
         return this.nodes;
     }
 
+    /**
+     * @param id
+     * @return Node - which id is param id
+     */
     public Node getNode(String id) {
         return this.nodes.get(id);
     }
-
+    
+//    Method to generate image from nodes and their neighbours. For testing that if node1 have reference to node2 
+//    then node2 should have reference to node1 too.
 //    public void referenceMap() {
 //        try {
 //            NodeWeb nodeWeb = this;

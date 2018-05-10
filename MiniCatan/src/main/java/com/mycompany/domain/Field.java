@@ -4,6 +4,9 @@ package com.mycompany.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Resource field which produce specific resource when its value is throwed.
+ */
 public class Field {
     private Resource resource;
     private int value;
@@ -29,7 +32,7 @@ public class Field {
         return location;
     }
 
-    public void setLocationAndNode(Location location, List<String> nodes) {
+    public void setLocationAndNodes(Location location, List<String> nodes) {
         this.location = location;
         this.nodes = new ArrayList<>();
         

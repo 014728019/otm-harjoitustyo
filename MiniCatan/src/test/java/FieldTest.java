@@ -40,7 +40,7 @@ public class FieldTest {
         ArrayList<String> list = new ArrayList<>();
         list.add("N1");
         list.add("N2");
-        this.field.setLocationAndNode(new Location(1,1), list);
+        this.field.setLocationAndNodes(new Location(1,1), list);
         assertTrue(this.field.getLocation().equals(new Location(1,1)));
         assertTrue(this.field.getNodes().contains("N1"));
     }

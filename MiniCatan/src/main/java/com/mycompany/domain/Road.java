@@ -15,6 +15,10 @@ public class Road {
         this.node1 = node1;
         this.node2 = node2;
     }
+    
+    public Player getPlayer() {
+        return player;
+    }
 
     public Node getNode1() {
         return node1;
@@ -40,10 +44,6 @@ public class Road {
      */
     public Location getLocation2() {
         return this.node2.getLocation();
-    }
-
-    public Player getPlayer() {
-        return player;
     }
     
     /**
