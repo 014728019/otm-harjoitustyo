@@ -8,6 +8,14 @@ Ohjelmassa on seuraavar pakkaukset:
 - _com.mycompany.logics_, sisältää pelin logiikasta vastaavat luokat
 - _com.mycompany.database_, sisältää tietojen pysyväistallennuksesta vastaavat luokat
 
+Luokat ja niiden yhteyksiä:
+
+<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/UML.png" width="600">
+
+(Kaaviosta puuttuu ainakin Player-Resource yhteys)
+
+
+
 ## Käyttöliittymä
 
 Käyttöliittymä sisältää 5 erilaista näkymää:
@@ -49,4 +57,10 @@ CREATE TABLE IF NOT EXISTS GameTable (
 Tässä vuoron vaihtoa kuvaava sekvenssikaavio:
 
 <img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/VuoronVaihtoSekv.png" width="800">
+
+## Ohjelman rakenteeseen jääneet heikkoudet
+
+* Solmuissa, eli _Node_:illa, olisi voinut olla suoraan yhteydet naapureihinsa eikä vain niiden nimiä. Verkkoa luodessa kuitenkin tällöin olisi pitänyt ensin luoda solmut, lisätä naapurit ja sitten vasta lisätä ne listalle. _NodeWeb_ ja _FieldWeb_ luokat olisi voinut jopa ehkä yhdistää, jolloin niiden välinen kommunikaatio olisi myös parantunut.
+
+* Ohjelmassa olisi voinut olla jonkinlainen ilmoitus-luokka tai rajapinta tai yliluokka, jonka avulla olisi voinut generoida käyttäjälle kaikki ilmoitukset, esimerkiksi _Alert_ tyyppisinä. Tällöin ilmoituksia olisi voinut luoda helpommin, saman tyylisiksi ja helppouden takia niitä olisi jaksanut tunkea useampaan paikkaankin.
 
