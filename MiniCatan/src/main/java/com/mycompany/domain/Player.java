@@ -56,12 +56,8 @@ public class Player implements Comparable<Player> {
      */
     public boolean makeRoad() {
         if (this.resources.get(Resource.Savi) >= 1 && this.resources.get(Resource.Puu) >= 1) {
-            int clays = this.resources.get(Resource.Savi);
-            int wood = this.resources.get(Resource.Puu);
-            clays--;
-            wood--;
-            this.resources.put(Resource.Savi, clays);
-            this.resources.put(Resource.Puu, wood);
+            this.resources.replace(Resource.Savi, (this.resources.get(Resource.Savi) - 1));
+            this.resources.replace(Resource.Puu, (this.resources.get(Resource.Puu) - 1));
             return true;
         }
         return false;
@@ -75,18 +71,10 @@ public class Player implements Comparable<Player> {
     public boolean makeBuilding() {
         if (this.resources.get(Resource.Savi) >= 1 && this.resources.get(Resource.Puu) >= 1
                 && this.resources.get(Resource.Lammas) >= 1 && this.resources.get(Resource.Vilja) >= 1) {
-            int clays = this.resources.get(Resource.Savi);
-            int wood = this.resources.get(Resource.Puu);
-            int corp = this.resources.get(Resource.Vilja);
-            int sheep = this.resources.get(Resource.Lammas);
-            clays--;
-            wood--;
-            corp--;
-            sheep--;
-            this.resources.put(Resource.Savi, clays);
-            this.resources.put(Resource.Puu, wood);
-            this.resources.put(Resource.Vilja, corp);
-            this.resources.put(Resource.Lammas, sheep);
+            this.resources.replace(Resource.Savi, (this.resources.get(Resource.Savi) - 1));
+            this.resources.replace(Resource.Puu, (this.resources.get(Resource.Puu) - 1));
+            this.resources.replace(Resource.Vilja, (this.resources.get(Resource.Vilja) - 1));
+            this.resources.replace(Resource.Lammas, (this.resources.get(Resource.Lammas) - 1));
             return true;
         }
         return false;
@@ -99,12 +87,8 @@ public class Player implements Comparable<Player> {
      */
     public boolean upgradeBuilding() {
         if (this.resources.get(Resource.Kivi) >= 3 && this.resources.get(Resource.Vilja) >= 2) {
-            int stone = this.resources.get(Resource.Kivi);
-            int corp = this.resources.get(Resource.Vilja);
-            stone = stone - 3;
-            corp = corp - 2;
-            this.resources.put(Resource.Vilja, corp);
-            this.resources.put(Resource.Kivi, stone);
+            this.resources.replace(Resource.Vilja, (this.resources.get(Resource.Vilja) - 2));
+            this.resources.replace(Resource.Kivi, (this.resources.get(Resource.Kivi) - 3));
             return true;
         }
         return false;
@@ -171,8 +155,8 @@ public class Player implements Comparable<Player> {
     
     public boolean changeResources3to1(Resource playerGive, Resource playerWant) {
         if (this.resources.get(playerGive) >= 3) {
-            this.resources.replace(playerGive, (this.resources.get(playerGive)-3));
-            this.resources.replace(playerWant, (this.resources.get(playerWant)+1));
+            this.resources.replace(playerGive, (this.resources.get(playerGive) - 3));
+            this.resources.replace(playerWant, (this.resources.get(playerWant) + 1));
             return true;
         }
         return false;

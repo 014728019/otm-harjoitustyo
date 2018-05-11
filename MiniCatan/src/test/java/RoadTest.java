@@ -15,6 +15,8 @@ import static org.junit.Assert.*;
 public class RoadTest {
     private Road road;
     private Road road1;
+    private Road road2;
+    private Road road3;
     
     @Before
     public void setUp() {
@@ -24,6 +26,8 @@ public class RoadTest {
         Node n3 = new Node("N3",new Location(3,3),Arrays.asList("N2"));
         this.road = new Road(p1, n1, n2);
         this.road1 = new Road(null,n2,n3);
+        this.road2 = new Road(null,n1,n3);
+        this.road3 = new Road(null,n3,n1);
     }
     
     @Test
@@ -48,11 +52,14 @@ public class RoadTest {
         assertTrue(this.road.inTouch(road1));
         this.road.getNode2().makeBuilding(new Building(new Player("Wrong", null)));
         assertFalse(this.road.inTouch(road1));
+        assertTrue(this.road.inTouch(road2));
+        assertTrue(this.road.inTouch(road3));
     }
     
     @Test
     public void testInTouchNode() {
         assertTrue(this.road.inTouch(new Node("N1", null, Arrays.asList())));
+        assertTrue(this.road.inTouch(new Node("N2", null, Arrays.asList())));
         assertFalse(this.road.inTouch(new Node("N3", null, Arrays.asList())));
     }
     

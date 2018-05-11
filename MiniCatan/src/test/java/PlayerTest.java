@@ -130,4 +130,13 @@ public class PlayerTest {
         assertEquals(-1, player2.compareTo(this.player1));
 
     }
+    
+    @Test
+    public void testChangeResource3to1() {
+        assertFalse(this.player1.changeResources3to1(Resource.Savi, Resource.Lammas));
+        this.player1.giveResources(Resource.Savi, 2);
+        assertTrue(this.player1.changeResources3to1(Resource.Savi, Resource.Lammas));
+        assertTrue(this.player1.getResources().get(Resource.Lammas) == 2);
+        assertTrue(this.player1.getResources().get(Resource.Savi) == 0);
+    } 
 }

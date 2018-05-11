@@ -15,7 +15,6 @@ import java.util.ArrayList;
  * Class manages game functionality.
  */
 public class Game implements DaoResources {
-
     private Turn turn;
     private Dices dices;
     private ArrayList<Player> players;
