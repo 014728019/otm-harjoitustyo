@@ -160,7 +160,6 @@ public class GameView implements View, DaoResources {
                             r.getLocation2().getX() * scalerX, r.getLocation2().getY() * scalerY);
                     b1.setDisable(true);
                 }
-                System.out.println("Road clicked.");
                 this.refreshStatus();
             });
 
@@ -276,10 +275,7 @@ public class GameView implements View, DaoResources {
     }
 
     private void refreshStatus() {
-        long a = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().gc();
-        long b = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-        System.out.println("FreedMemory(%): " + (double) (a - b) / Runtime.getRuntime().totalMemory() * 100);
 
         this.statusPlayers.getChildren().clear();
         for (Player p : game.getPlayers()) {

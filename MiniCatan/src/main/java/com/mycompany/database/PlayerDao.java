@@ -63,7 +63,6 @@ public class PlayerDao implements Dao<Player, String> {
             
             System.out.println("Uusi pelaaja lisätty: " + o.getName());
         } else {
-            System.out.println("Uutta pelaajaa ei voitu lisätä, koska nimi on jo varattu: " + o.getName());
             throw new Exception("Uutta pelaajaa ei voitu lisätä, koska nimi on jo varattu: " + o.getName());
         }
     }

@@ -1,6 +1,5 @@
 package com.mycompany.database;
 
-import java.sql.*;
 import java.util.*;
 
 public interface Dao<T, K> {

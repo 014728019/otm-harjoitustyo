@@ -191,6 +191,13 @@ public class Game implements DaoResources {
         return false;
     }
     
+    /**
+     * Player can change resources 3:1 with bank.
+     * @param playerGive
+     * @param playerWant
+     * @return <i>true</i> - if player have enough resources
+     * <br>   <i>false</i> - otherwise
+     */
     public boolean changeResources(Resource playerGive, Resource playerWant) {
         if (this.getPlayerOnTurn().changeResources3to1(playerGive, playerWant)) {
             return true;
