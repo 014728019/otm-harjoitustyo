@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [MiniCata.jar](https://github.com/014728019/otm-harjoitustyo/releases)
+Lataa tiedosto [MiniCatan.jar](https://github.com/014728019/otm-harjoitustyo/releases)
 
 ## Konfigurointi
 
