@@ -4,25 +4,17 @@ Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnit
 
 ## Yksikkö- ja integraatiotestaus
 
-### sovelluslogiikka
+### Sovelluslogiikka
 
-Automatisoitujen testien ytimen moudostavat sovelluslogiikkaa, eli pakkauksen [todoapp.domain](https://github.com/mluukkai/OtmTodoApp/tree/master/src/main/java/todoapp/domain) luokkia testaavat integraatiotestit [TodoServiceUserTest](https://github.com/mluukkai/OtmTodoApp/blob/master/src/test/java/todoapp/domain/TodoServiceUserTest.java) ja [TodoServiceTodoTest](https://github.com/mluukkai/OtmTodoApp/blob/master/src/test/java/todoapp/domain/TodoServiceUserTest.java) joiden määrittelevät testitapaukset simuloivat käyttöliittymän [TodoService](https://github.com/mluukkai/OtmTodoApp/blob/master/src/main/java/todoapp/domain/TodoService.java)-olin avulla suorittamia toiminnallisuuksia.
-
-Integraatiotestit käyttävät datan pysyväistallennukseen DAO-rajapintojen keskusmuistitoteutuksia [FakeTodoDao](https://github.com/mluukkai/OtmTodoApp/blob/master/src/test/java/todoapp/domain/FakeTodoDao.java) ja [FakeUserDao](https://github.com/mluukkai/OtmTodoApp/blob/master/src/test/java/todoapp/domain/FakeTodoDao.java)
-
-Sovelluslogiikkakerroksen luokille [User](https://github.com/mluukkai/OtmTodoApp/blob/master/src/main/java/todoapp/domain/User.java) ja [Todo](https://github.com/mluukkai/OtmTodoApp/blob/master/src/main/java/todoapp/domain/User.java) on tehty muutama yksikkötesti kattamaan tapaukset, joita integraatiotestit eivät kata (mm. olioiden _equals_-metodit).
-
-### DAO-luokat
-
-Molempien DAO-luokkien toiminnallisuus on testattu luomalla testeissä tilapäinen tiedosto hyödyntäen JUnitin [TemporaryFolder](https://junit.org/junit4/javadoc/4.12/org/junit/rules/TemporaryFolder.html)-ruleja.
+Testit testaavat pelin komponentit kohtuun suoraviivaisesti, eli pakkauksen _com.mycompany.domain_ luokat. _GameTest_ testistä löytyy myös laajemman kokonaisuuden testi pienestä peliskenaariosta.
 
 ### Testauskattavuus
 
-Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 94% ja haarautumakattavuus 96%
+Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 93% ja haarautumakattavuus 71%
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/t-1.png" width="800">
+<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/testikattavuus.png" width="800">
 
-Testaamatta jäivät tilanteet, joissa käyttäjät tai tehtävät tallettavia tiedostoja ei ole, tai niihin ei ole luku- ja kirjoitusoikeutta.
+Testaamatta jäivät _com.mycompany.database_ pakkauksen luokat suurimmaksi osaksi.
 
 ## Järjestelmätestaus
 
