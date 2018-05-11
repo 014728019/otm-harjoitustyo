@@ -18,19 +18,14 @@ Testaamatta jäivät _com.mycompany.database_ pakkauksen luokat suurimmaksi osak
 
 ## Järjestelmätestaus
 
-Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
+Sovelluksen järjestelmätestaus on suoritettu manuaalisesti. Sovellus on haettu ja testattu [käyttöohjeen](https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/kayttoohje.md) ohjeita noudattaen OSX-ympäristössä. 
 
-### Asennus ja kanfigurointi
-
-Sovellus on haettu ja sitä on testattu [käyttöohjeen](https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/kayttoohje.md) kuvaamalla tavalla sekä OSX- että Linux-ympäristöön siten, että sovelluksen käynnistyshakemistossa on ollut käyttöohjeen kuvauksen mukainen _config.properties_-tiedosto.
-
-Sovellusta on testattu sekä tilanteissa, joissa käyttäjät ja työt tallettavat tiedostot ovat olleet olemassa ja joissa niitä ei ole ollut jolloin ohjelma on luonut ne itse.
+Sovellus on testattu tilanteissa, jossa juurihakemistossa ei ole valmista tietokantaa ja myös valmiilla tietokannalla.
 
 ### Toiminnallisuudet
 
-Kaikki [määrittelydokumentin](https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/vaatimusmaarittely.md#perusversion-tarjoama-toiminnallisuus) ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä.
+Kaikki [määrittelydokumentin](https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/vaatimusmaarittely.md) ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä.
 
 ## Sovellukseen jääneet laatuongelmat
 
-Sovellus ei anna tällä hetkellä järkeviä virheilmoituksia, seuraavissa tilanteissa
-- konfiguraation määrittelemiin tiedostoihin ei ole luku/kirjoitusoikeuksia
+Sovellus ei anna tällä hetkellä järkeviä virheilmoituksia ihan kaikissa tapauksissa.
