@@ -46,4 +46,7 @@ CREATE TABLE IF NOT EXISTS GameTable (
 
 ## Päätoiminnallisuudet
 
+Tässä vuoron vaihtoa kuvaava sekvenssikaavio:
+
+<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/VuoronVaihtoSekv.png" width="800">
 
