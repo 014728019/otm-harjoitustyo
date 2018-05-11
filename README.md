@@ -44,7 +44,7 @@ Komento
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston _MiniCatan-1.0-SNAPSHOT.jar_. Ennen jar-tiedoston suorittamista tiedoston _MiniCatanDatabase.db_ tulisi olla samassa kansiossa kuin suoritettava jar-tiedosto.
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _MiniCatan-1.0-SNAPSHOT.jar_.
 
 ### JavaDoc
 
