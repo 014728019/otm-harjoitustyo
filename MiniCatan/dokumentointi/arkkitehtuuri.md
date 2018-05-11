@@ -44,4 +44,6 @@ CREATE TABLE IF NOT EXISTS GameTable (
     winPoints integer);
 </pre>
 
+## Päätoiminnallisuudet
+
 
