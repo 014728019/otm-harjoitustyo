@@ -16,7 +16,7 @@ MiniCatan on peli 2-4 pelaajalle. Se on yksinkertaistettu ja hieman muunneltu ve
 
 ## Releaset
 
-[Viikko7] (https://github.com/014728019/otm-harjoitustyo/releases/tag/viikko7)
+[Viikko7](https://github.com/014728019/otm-harjoitustyo/releases/tag/viikko7)
 
 ## Komentorivitoiminnot
 
