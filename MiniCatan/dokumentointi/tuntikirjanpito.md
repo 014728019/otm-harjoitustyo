@@ -1,4 +1,4 @@
-# työaikakirjanpito
+# Työaikakirjanpito
 
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
@@ -14,4 +14,5 @@
 | 27.4. | 3 | Muokattu tietokannan toimintaa ja muokattu Game olion rakennetta. |
 | 2.5. | 4 | Tehty JavaDocceja, Arkkitehtuurikuvausta, testejä jne. |
 | 8.5. | 1 | Lisätty pelaajille mahdollisuus vaihtaa pelissä resursseja 3:1 |
-|  | 33.5    |  |
+| 11.5. | 4 | Dokumentteja, viimeiset testit ja työn lopullinen palautus |
+|  | 37.5    |  |
