@@ -1,4 +1,4 @@
-[DaoResources]->[GameView]
+[DaoResources]^-[GameView]
 [DaoResources]1-1[Database]
 [GameView]1-1[Game]
 [Player]1-*[Building]
@@ -17,14 +17,12 @@
 [Turn]1-1[Game]
 [Field]*-6[Node]
 [Turn]1-*[Player]
-[DaoResources]->[Game]
+[DaoResources]^-[Game]
 [DaoResources]1-1[PlayerDao]
 [DaoResources]1-1[StatisticsDao]
-[NewPlayerView]<-[DaoResources]
-[StatisticsView]<-[DaoResources]
+[NewPlayerView]-^[DaoResources]
+[StatisticsView]-^[DaoResources]
 [View]^-[GameView]
 [View]^-[StatisticsView]
 [View]^-[NewPlayerView]
 [View]^-[InfoView]
-
-

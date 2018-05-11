@@ -176,7 +176,6 @@ public class GameView implements View, DaoResources {
 
             Button b1 = new Button("");
             b1.setOnAction((event) -> {
-                System.out.println(k.getId() + " clicked");
                 this.game.clickNode(k);
                 if (k.getBuilding() != null) {
                     plotter.setFill(k.getBuilding().getPlayer().getColor());

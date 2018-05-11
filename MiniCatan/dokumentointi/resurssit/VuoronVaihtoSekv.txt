@@ -1,0 +1,23 @@
+title Vuoron vaihto
+
+Käyttäjä->GameView: "Seuraava vuoro" -nappi
+GameView->Game: throwDice()
+Game->Dices: throwDices()
+Dices->Game: int
+loop Jaetaan pelaajille resurssit.
+    Game->FieldWeb: getFields() (Käytetään filtteriä)
+    FieldWeb->Game: ArrayList<Field> (Tuottavat kentät)
+    Game->Field: getNodes() (Haetaan viereiset solmut)
+    Field->Game: ArrayList<String> (solmujen nimet)
+    loop Etsitään verkosta solmut nimen perusteella ja käsketään niitten tuottaa.
+        Game->NodeWeb: getNode(Nimi)
+        NodeWeb->Game: Node
+        Game->Node: produce(Resource)
+        Node->Building: produce(Resource)
+        Building->Player: giveResources(Resource, this.value)
+    end
+end
+GameView->Game: nextTurn()
+Game->Turn: nextTurn()
+GameView->GameView: refreshStatus()
+GameView->Käyttäjä: Päivitetty näkymä

@@ -51,7 +51,7 @@ public class StatisticsView implements View, DaoResources {
         
         table.getColumns().addAll(name, playedGames, winRatio);
         try {
-            ObservableList<StatisticsBuilder> data = FXCollections.observableArrayList();
+            ObservableList data = FXCollections.observableArrayList();
             
             STATDAO.findAll().stream().forEach(s-> {
                 data.add(s);

@@ -146,10 +146,10 @@ public class Game implements DaoResources {
      * Throw dices and collect resources from fields to players.
      */
     public void throwDice() {
-        this.dices.throwDices();
+        int throwed = this.dices.throwDices();
 
         this.getFieldWeb().getFields().stream()
-                .filter(f -> f.getValue() == this.dices.getThrowed())
+                .filter(f -> f.getValue() == throwed)
                 .forEach(f -> {
                     f.getNodes().forEach(n -> {
                         this.nodeWeb.getNode(n).produce(f.getResource());
