@@ -1,48 +1,57 @@
 # Käyttöohje
 
-Lataa tiedosto [todoapp.jar](https://github.com/mluukkai/OtmTodoApp/releases/tag/0.1)
+Lataa tiedosto [MiniCatan.jar](https://github.com/014728019/otm-harjoitustyo/releases)
 
 ## Konfigurointi
 
-Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto _config.properties_, joka määrittelee käyttäjät ja todot tallettavien tiedostojen nimet. Tiedoston muoto on seuraava
-
-```
-userFile=users.txt
-todoFile=todos.txt
-```
+Ohjelma osaa luoda tyhjän tietokannan automaattisesti, jollei se sitä löydä juurihakemistosta. Peliin tarvittavat parametrit syötetään pelikohtaisesti käyttöliittymästä.
 
 ## Ohjelman käynnistäminen
 
 Ohjelma käynnistetään komennolla 
 
 ```
-java -jar todoapp.jar
+java -jar MiniCatan.jar
 ```
 
-## Kirjautuminen
+## Alkuvalikko
 
-Sovellus käynnistyy kirjautumisnäkymään:
+Sovelluksen alkuvalikko näyttää seuraavalta:
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-1.png" width="400">
+<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/alkuvalikko.png" width="200">
 
-Kirjautuminen onnistuu kirjoittamalla olemassaoleva käyttäjätunnus syötekenttään ja painamalla _login_.
+## Uuden pelaajan luominen
 
-## Uuden käyttäjän luominen
+Paina alkuvalikosta "Luo uusi pelaaja", jonka jälkeen syötä haluamasi nimi kohdan "Nimi:" alapuolelle.
 
-Kirjautumisnäkymästä on mahdollista siirtyä uuden käyttäjän luomisnäkymään panikkeella _create new user_.
+<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/uusipelaaja.png" width="300">
 
-Uusi käyttäjä luodaan syöttämällä tiedot syötekenttiin ja painamalla _create_
+Paina "Lisää pelaaja" nappia, jonka jälkeen saat ilmoituksen, että onnistuiko lisääminen. Ilmoituksessa saattaa olla myös lisäohjeita, jollei nimen lisääminen onnistunut. Voit palata alkuvalikkoon painamalla "Takaisin" nappia tai sulkemalla ikkunan.
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-2.png" width="400">
+## Pelin aloittaminen
 
-Jos käyttäjän luominen onnistuu, palataan kirjautumisnäkymään.
+Paina alkuvalikosta "Uusi peli".
 
-## Todojen luominen ja tehdyksi merkkaaminen
+<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/pelinaloittaminen.png" width="300">
 
-Onnistuneen kirjautumisen myötä siirrytään käyttäjien tekemättömät työt listaavaan näkymään
+Valitse voittopiste määrä, johon haluatte pelata.
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-3.png" width="400">
+Lisätkää pelaajat kohdasta "Lisää pelaaja".
 
-Näkymä mahdollistaa olemassaolevien todojen merkkaamisen tehdyksi painikkeella _done_ sekä uusien todojen luomisen kirjoittamalla syötekenttään tehtävän kuvauksen ja painamalla _create_. 
+Aloittakaa peli painamalla "Aloita uusi peli!" nappia.
 
-Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään.
+## Pelaaminen
+
+Pelinäkymästä löytyy "Info" nappula tarkempien peliohjeiden näyttämiseen, mutta tässä muutama ohje.
+
+<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/solmujatie.png" width="300">
+
+Kylän voit rakentaa painamalla "isompaa mustaa palloa" eli solmukohtaa. Kuvassa punainen pelaaja on rakentanut kylän(punainen pallo) yhteen solmuun. Kylän kehittäminen tapahtuu painamalla kylää uudelleen vuorollaan, jos resurssit riittävät.
+
+Tien rakentaminen onnistuu painamalla "pienempää mustaa palloa" mustan viivan päältä. Kuvassa punainen pelaaja on rakentanut tien(punainen viiva) kylästään oikealle päin.
+
+Vuoron vaihtuessa heitetään automaattisesti kahta kuutio noppaa, joista lasketaan summa(eli range 2-12 ja todennäköisin arvo 7). Tämän jälkeen pelaajat saavat kylistään resursseja, jos ne ovat tuottavan resurssikentän vieressä. Kuvan punainen pelaaja saisi 1 puu resurssin, kun heitettäisiin luku 7 tai 2 savi resurssia kun heitettäisiin luku 4. Tuotettujen resurssien määrä nousee, kun kylän tasoa nostetaan.
+
+## Tilastojen tarkastelu
+
+Paina alkuvalikosta "Tilastoja" nappia. Listassa näkyy pelaajien nimet, pelattujen pelien määrä ja voitto suhde pelatuista peleistä.

@@ -13,4 +13,5 @@
 | 26.4. | 3 | Muokattu tietokannan rakennetta ja lisätty toiminnallisuus pelitulosten tallentamiseen ja tilastointiin. |
 | 27.4. | 3 | Muokattu tietokannan toimintaa ja muokattu Game olion rakennetta. |
 | 2.5. | 4 | Tehty JavaDocceja, Arkkitehtuurikuvausta, testejä jne. |
-|  | 32.5    |  |
+| 8.5. | 1 | Lisätty pelaajille mahdollisuus vaihtaa pelissä resursseja 3:1 |
+|  | 33.5    |  |
