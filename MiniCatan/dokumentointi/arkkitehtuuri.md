@@ -10,7 +10,7 @@ Ohjelmassa on seuraavar pakkaukset:
 
 Luokat ja niiden yhteyksiä:
 
-<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/UML.png" width="600">
+<img src="https://github.com/jokinen77/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/UML.png" width="600">
 
 (Kaaviosta puuttuu ainakin Player-Resource yhteys)
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS GameTable (
 
 Tässä vuoron vaihtoa kuvaava sekvenssikaavio:
 
-<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/VuoronVaihtoSekv.png" width="800">
+<img src="https://github.com/jokinen77/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/VuoronVaihtoSekv.png" width="800">
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
