@@ -12,7 +12,7 @@ Testit testaavat pelin komponentit kohtuun suoraviivaisesti, eli pakkauksen _com
 
 Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 93% ja haarautumakattavuus 71%
 
-<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/testikattavuus.png" width="800">
+<img src="https://github.com/jokinen77/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/testikattavuus.png" width="800">
 
 Testaamatta jäivät _com.mycompany.database_ pakkauksen luokat suurimmaksi osaksi.
 
