@@ -18,13 +18,13 @@ java -jar MiniCatan.jar
 
 Sovelluksen alkuvalikko näyttää seuraavalta:
 
-<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/alkuvalikko.png" width="200">
+<img src="https://github.com/jokinen77/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/alkuvalikko.png" width="200">
 
 ## Uuden pelaajan luominen
 
 Paina alkuvalikosta "Luo uusi pelaaja", jonka jälkeen syötä haluamasi nimi kohdan "Nimi:" alapuolelle.
 
-<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/uusipelaaja.png" width="300">
+<img src="https://github.com/jokinen77/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/uusipelaaja.png" width="300">
 
 Paina "Lisää pelaaja" nappia, jonka jälkeen saat ilmoituksen, että onnistuiko lisääminen. Ilmoituksessa saattaa olla myös lisäohjeita, jollei nimen lisääminen onnistunut. Voit palata alkuvalikkoon painamalla "Takaisin" nappia tai sulkemalla ikkunan.
 
@@ -32,7 +32,7 @@ Paina "Lisää pelaaja" nappia, jonka jälkeen saat ilmoituksen, että onnistuik
 
 Paina alkuvalikosta "Uusi peli".
 
-<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/pelinaloittaminen.png" width="300">
+<img src="https://github.com/jokinen77/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/pelinaloittaminen.png" width="300">
 
 Valitse voittopiste määrä, johon haluatte pelata.
 
@@ -44,7 +44,7 @@ Aloittakaa peli painamalla "Aloita uusi peli!" nappia.
 
 Pelinäkymästä löytyy "Info" nappula tarkempien peliohjeiden näyttämiseen, mutta tässä muutama ohje.
 
-<img src="https://github.com/014728019/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/solmujatie.png" width="300">
+<img src="https://github.com/jokinen77/otm-harjoitustyo/blob/master/MiniCatan/dokumentointi/resurssit/solmujatie.png" width="300">
 
 Kylän voit rakentaa painamalla "isompaa mustaa palloa" eli solmukohtaa. Kuvassa punainen pelaaja on rakentanut kylän(punainen pallo) yhteen solmuun. Kylän kehittäminen tapahtuu painamalla kylää uudelleen vuorollaan, jos resurssit riittävät.
 
